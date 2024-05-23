@@ -5,8 +5,9 @@ import { AppRouterCacheProvider } from "@mui/material-nextjs/v13-appRouter";
 import Providers from "@/lib/providers/Providers";
 import { Box, Container } from "@mui/material";
 import Navbar from "@/components/shared/Navbar";
+import Footer from "../components/shared/Footer";
 
-const inter = Inter({ subsets: ["latin"] });
+// const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Home",
@@ -20,7 +21,7 @@ export default function RootLayout({
   return (
     <Providers>
       <html lang="en">
-        <body className={inter.className}>
+        <body >
           <AppRouterCacheProvider>
             <Box
               sx={{
@@ -38,6 +39,7 @@ export default function RootLayout({
                   {children}
                 </Box>
               </Container>
+              <Footer />
             </Box>
           </AppRouterCacheProvider>
         </body>
