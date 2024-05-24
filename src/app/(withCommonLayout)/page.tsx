@@ -1,5 +1,6 @@
-import AboutUs from "@/components/shared/ui/home/AboutUs";
-import HeroSection from "@/components/shared/ui/home/HeroSection";
+import AboutUs from "@/components/home/ui/AboutUs";
+import HeroSection from "@/components/home/ui/HeroSection";
+import ResentLostItem from "@/components/home/ui/ResentLostItem";
 import { Box } from "@mui/material";
 
 export default function Home() {
@@ -7,6 +8,7 @@ export default function Home() {
     <Box>
       <HeroSection />
       <AboutUs />
+      <ResentLostItem />
     </Box>
   );
 }

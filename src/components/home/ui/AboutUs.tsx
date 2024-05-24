@@ -1,5 +1,5 @@
 import { Box, Stack, Typography } from "@mui/material";
-import imageAboutUs from "../../../../assets/9318688.jpg";
+import imageAboutUs from "../../../assets/9318688.jpg";
 import Image from "next/image";
 
 const AboutUs = () => {
@@ -29,10 +29,6 @@ const AboutUs = () => {
             frustration and stress that comes with losing valuable items,
             whether it&apos;s a cherished piece of jewelry, an important
             document, or a favorite gadget.
-          </Typography>
-          <Typography width="50%">
-            Our platform is dedicated to making the lost and found process as
-            seamless and effective as possible.
           </Typography>
         </Box>
         <Box>

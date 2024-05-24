@@ -1,7 +1,6 @@
 import { Box, Button, Typography } from "@mui/material";
-import image1 from "../../../../assets/4966447.jpg";
-import Image from "next/image";
 import Link from "next/link";
+import image1 from "../../../assets/4966447.jpg";
 
 const HeroSection = () => {
   return (

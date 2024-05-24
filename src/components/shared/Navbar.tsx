@@ -35,6 +35,7 @@ function Navbar() {
       sx={{
         background: "#f4f7fe",
       }}
+      borderBottom={1}
     >
       <Container maxWidth="xl">
         <Toolbar disableGutters>
