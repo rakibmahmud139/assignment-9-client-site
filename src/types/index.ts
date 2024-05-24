@@ -41,3 +41,11 @@ export type TLostItem = {
   user: TUser;
   category: TCategory;
 };
+
+export const authKey = "accessToken";
+
+export type TMeta = {
+  page?: number;
+  limit?: number;
+  total?: number;
+};

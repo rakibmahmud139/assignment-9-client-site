@@ -11,10 +11,16 @@ const AboutUs = () => {
           component="h1"
           variant="h4"
           borderBottom={1}
-          width={220}
+          width={320}
           mx="auto"
         >
+          <Typography component="span" color="gold" fontSize="36px">
+            ***
+          </Typography>
           About Us
+          <Typography component="span" color="gold" fontSize="36px">
+            ***
+          </Typography>
         </Typography>
       </Box>
 

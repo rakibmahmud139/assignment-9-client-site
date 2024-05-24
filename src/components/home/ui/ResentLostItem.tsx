@@ -20,10 +20,16 @@ const ResentLostItem = async () => {
           variant="h4"
           borderBottom={1}
           borderColor="pink"
-          width={320}
+          width={420}
           mx="auto"
         >
+          <Typography component="span" color="gold" fontSize="36px">
+            ***
+          </Typography>
           Recent Lost Items
+          <Typography component="span" color="gold" fontSize="36px">
+            ***
+          </Typography>
         </Typography>
         <Box mt={8}>
           <Grid container spacing={2}>

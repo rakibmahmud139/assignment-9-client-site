@@ -6,6 +6,7 @@ import Providers from "@/lib/providers/Providers";
 import { Box, Container } from "@mui/material";
 import Navbar from "@/components/shared/Navbar";
 import Footer from "../components/shared/Footer";
+import { Toaster } from "sonner";
 
 // const inter = Inter({ subsets: ["latin"] });
 
@@ -30,7 +31,9 @@ export default function RootLayout({
             >
               <Container>
                 <Navbar />
-                <Box my={2}>{children}</Box>
+                <Box my={2}>
+                  <Toaster position="top-center" /> {children}
+                </Box>
               </Container>
               <Footer />
             </Box>
