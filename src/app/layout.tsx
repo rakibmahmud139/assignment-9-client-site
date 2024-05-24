@@ -21,7 +21,7 @@ export default function RootLayout({
   return (
     <Providers>
       <html lang="en">
-        <body >
+        <body>
           <AppRouterCacheProvider>
             <Box
               sx={{
@@ -30,14 +30,7 @@ export default function RootLayout({
             >
               <Container>
                 <Navbar />
-                <Box
-                  sx={{
-                    height: "100vh",
-                  }}
-                  my={2}
-                >
-                  {children}
-                </Box>
+                <Box my={2}>{children}</Box>
               </Container>
               <Footer />
             </Box>
