@@ -25,12 +25,12 @@ const FileUploader = ({ name, label, sx, fullWidth }: TProps) => {
             tabIndex={-1}
             startIcon={<FileUploadIcon />}
             sx={{ ...sx }}
+            fullWidth={fullWidth}
           >
             {label || "Profile"}
             <Input
               {...field}
               type={name}
-              fullWidth={fullWidth}
               value={value?.fileName}
               onChange={(e) =>
                 onChange((e?.target as HTMLInputElement).files?.[0])
