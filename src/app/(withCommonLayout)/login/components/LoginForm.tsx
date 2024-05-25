@@ -33,7 +33,7 @@ const LoginForm = () => {
       }}
     >
       <Grid container spacing={4}>
-        <Grid item md={12}>
+        <Grid item md={12} xs={12}>
           <FLInput
             name="email"
             label="Email"
@@ -42,7 +42,7 @@ const LoginForm = () => {
             fullWidth={true}
           />
         </Grid>
-        <Grid item md={12}>
+        <Grid item md={12} xs={12}>
           <FLInput
             name="password"
             label="Password"
@@ -56,7 +56,7 @@ const LoginForm = () => {
       <Typography my={2} textAlign="center">
         If you new here?
         <Link href={"/register"}>
-          <Typography component="span" color="#00bcd4" ml={2}>
+          <Typography component="span" color="#00bcd4" ml={1}>
             Register Now
           </Typography>
         </Link>

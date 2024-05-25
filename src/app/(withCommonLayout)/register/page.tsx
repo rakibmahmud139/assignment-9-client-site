@@ -1,8 +1,8 @@
 import { Box, Typography } from "@mui/material";
 import bgImage from "../../../assets/pexels-allecgomes-8961886.jpg";
-import LoginForm from "./components/LoginForm";
+import RegisterForm from "./components/RegisterForm";
 
-const LoginPage = () => {
+const RegisterPage = () => {
   return (
     <Box
       sx={{
@@ -18,8 +18,7 @@ const LoginPage = () => {
           backgroundColor: "gray",
           maxWidth: "500px",
           minWidth: "100px",
-          maxHeight: "500px",
-          minHeight: "200px",
+          height: "100%",
           mx: "auto",
           p: "40px",
           borderTopLeftRadius: "150px",
@@ -33,14 +32,14 @@ const LoginPage = () => {
           mb={12}
           color="#00bcd4"
         >
-          Login !!
+          Register !!
         </Typography>
         <Box>
-          <LoginForm />
+          <RegisterForm />
         </Box>
       </Box>
     </Box>
   );
 };
 
-export default LoginPage;
+export default RegisterPage;
