@@ -10,7 +10,16 @@ const lostItemApi = baseApi.injectEndpoints({
       }),
       invalidatesTags: ["lostItem"],
     }),
+
+    getLostItem: builder.query({
+      query: (args) => ({
+        url: "/lost-items",
+        method: "GET",
+        params: args,
+      }),
+      providesTags: ["lostItem"],
+    }),
   }),
 });
 
-export const { useSubmitLostItemMutation } = lostItemApi;
+export const { useSubmitLostItemMutation, useGetLostItemQuery } = lostItemApi;

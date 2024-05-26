@@ -21,8 +21,8 @@ export default function CommonLayout({
       <Container>
         <Navbar />
         <Box my={2}>{children}</Box>
-        <Footer />
       </Container>
+      <Footer />
     </Box>
   );
 }

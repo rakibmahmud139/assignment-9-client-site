@@ -25,7 +25,7 @@ const FoundItemCard = () => {
       <Container>
         <Grid container spacing={4}>
           {foundItems?.data?.map((item) => (
-            <Grid key={item.id} item md={3} xs={12}>
+            <Grid key={item.id} item md={4} xs={12}>
               <Card sx={{ maxWidth: 600 }}>
                 <CardActionArea>
                   <Image

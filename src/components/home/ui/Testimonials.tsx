@@ -1,9 +1,14 @@
-import { Box, Rating, Typography } from "@mui/material";
+"use client";
 
-const Testimonials = async () => {
-  const res = await fetch("http://localhost:5000/api/review");
-  const { data: reviews } = await res.json();
-  console.log(reviews);
+import { useGetReviewQuery } from "@/redux/features/review/reviewApi";
+import { Box, Rating, Typography } from "@mui/material";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import Image from "next/image";
+
+const Testimonials = () => {
+  const { data: reviews } = useGetReviewQuery({});
+  console.log(reviews?.data);
+
   return (
     <Box mt={16}>
       <Typography
@@ -23,15 +28,37 @@ const Testimonials = async () => {
           ***
         </Typography>
       </Typography>
-      <Box>
-        {reviews?.map((review) => (
-          <Rating
-            key={review.id}
-            name="read-only"
-            value={review?.ratting}
-            readOnly
-          />
-        ))}
+      <Box display="flex" justifyContent="center">
+        <Box className="w-64 carousel rounded-box mt-16 mb-4 ">
+          {reviews?.data.map((review) => (
+            <Box
+              key={review.id}
+              className="carousel-item w-full  bg-slate-200"
+              display="flex"
+              flexDirection="column"
+              justifyContent="center"
+            >
+              <Box textAlign="center" my={4}>
+                {review?.user?.userProfile?.photoUrl ? (
+                  <Image
+                    src={review?.user?.userProfile?.photoUrl}
+                    alt="user image"
+                  />
+                ) : (
+                  <AccountCircleIcon
+                    sx={{
+                      fontSize: "80px",
+                    }}
+                  />
+                )}
+              </Box>
+              <Box textAlign="center" mb={4}>
+                <Typography mb={2}>Name: {review?.user?.name}</Typography>
+                <Rating value={review?.ratting} readOnly />
+              </Box>
+            </Box>
+          ))}
+        </Box>
       </Box>
     </Box>
   );

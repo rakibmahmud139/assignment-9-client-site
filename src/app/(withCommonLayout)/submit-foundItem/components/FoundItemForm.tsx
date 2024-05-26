@@ -62,21 +62,33 @@ const FoundItemForm = () => {
                 name="foundItemName"
                 label="Found Item Name"
                 fullWidth={true}
+                required={true}
               />
             </Grid>
             <Grid item md={6} xs={12}>
               <FileUploader name="file" label="Item Image" fullWidth={true} />
             </Grid>
             <Grid item md={6} xs={12}>
-              <FLInput name="location" label="location" fullWidth={true} />
+              <FLInput
+                name="location"
+                required={true}
+                label="location"
+                fullWidth={true}
+              />
             </Grid>
             <Grid item md={6} xs={12}>
-              <DatePicker name="date" label="location" fullWidth={true} />
+              <DatePicker
+                name="date"
+                label="location"
+                fullWidth={true}
+                required={true}
+              />
             </Grid>
             <Grid item md={6} xs={12}>
               <FLInput
                 name="description"
                 label="Description"
+                required={true}
                 fullWidth={true}
               />
             </Grid>
@@ -85,6 +97,7 @@ const FoundItemForm = () => {
                 name="contactNumber"
                 label="Contact Number"
                 fullWidth={true}
+                required={true}
               />
             </Grid>
             <Grid item md={6} xs={12}>
@@ -93,6 +106,7 @@ const FoundItemForm = () => {
                 name="categoryId"
                 label="Category"
                 fullWidth={true}
+                required={true}
               />
             </Grid>
           </Grid>

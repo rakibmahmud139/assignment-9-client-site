@@ -16,6 +16,13 @@ export const baseApi = createApi({
       return headers;
     },
   }),
-  tagTypes: ["foundItem", "lostItem", "claimItem", "user", "category"],
+  tagTypes: [
+    "foundItem",
+    "lostItem",
+    "claimItem",
+    "user",
+    "category",
+    "review",
+  ],
   endpoints: () => ({}),
 });

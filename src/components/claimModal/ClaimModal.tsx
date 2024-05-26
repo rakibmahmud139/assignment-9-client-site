@@ -93,7 +93,9 @@ const ClaimModal = ({ open, setOpen, foundItemId }: TProps) => {
               </Grid>
             </Grid>
             <Box textAlign="center" mt={8}>
-              <Button type="submit">Claim</Button>
+              <Button type="submit" disabled={isLoading}>
+                Claim
+              </Button>
             </Box>
           </FLForms>
         </Container>

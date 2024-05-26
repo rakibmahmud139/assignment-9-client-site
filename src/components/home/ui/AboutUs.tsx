@@ -29,7 +29,7 @@ const AboutUs = () => {
           <Typography variant="h5" color="navy" mb={2}>
             Purpose and Mission
           </Typography>
-          <Typography width="50%">
+          <Typography width="75%">
             At Lost and Found, our mission is to help people reunite with their
             lost belongings quickly and efficiently. We understand the
             frustration and stress that comes with losing valuable items,

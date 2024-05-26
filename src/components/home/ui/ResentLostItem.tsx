@@ -1,18 +1,13 @@
+"use client";
+
 import { Box, Typography } from "@mui/material";
 import Grid from "@mui/material/Grid";
 import { TLostItem } from "@/types";
 import LostItemCard from "./LostItemCard";
+import { useGetLostItemQuery } from "@/redux/features/lostItem/lostItemApi";
 
-export const getRecentLostItems = async () => {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/lost-items `, {
-    cache: "no-store",
-  });
-  const data = await res.json();
-  return data;
-};
-
-const ResentLostItem = async () => {
-  const lostItems = await getRecentLostItems();
+const ResentLostItem = () => {
+  const { data: lostItems } = useGetLostItemQuery({});
   console.log(lostItems?.data);
   return (
     <Box mt={16}>
