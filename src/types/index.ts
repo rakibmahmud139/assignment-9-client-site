@@ -1,3 +1,6 @@
+import { USER_ROLE } from "@/constant/role";
+import { SvgIconTypeMap } from "@mui/material";
+import { OverridableComponent } from "@mui/material/OverridableComponent";
 import { StaticImport } from "next/dist/shared/lib/get-img-props";
 
 export type TUser = {
@@ -48,4 +51,23 @@ export type TMeta = {
   page?: number;
   limit?: number;
   total?: number;
+};
+
+export type DrawerItem = {
+  title: string;
+  path: string;
+  parentPath?: string;
+  icon?: OverridableComponent<SvgIconTypeMap<{}, "svg">> & { muiName: string };
+  child?: DrawerItem[];
+};
+
+export type UserRole = keyof typeof USER_ROLE;
+
+export type DecodedUser = {
+  name: string;
+  email: string;
+  role: "user" | "admin";
+  photoUrl: string;
+  iat: number;
+  exp: number;
 };

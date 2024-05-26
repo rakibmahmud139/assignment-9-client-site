@@ -1,12 +1,11 @@
 import { TLostItem } from "@/types";
+import { Button, Grid } from "@mui/material";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
-import { Button, Grid } from "@mui/material";
 import Typography from "@mui/material/Typography";
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
 
 type TProps = {
   lostItem: TLostItem;
@@ -19,8 +18,8 @@ const LostItemCard = ({ lostItem }: TProps) => {
         <Image
           src={lostItem?.photo}
           alt="LostItemImage"
-          width={140}
-          height="140"
+          width={345}
+          height={120}
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">

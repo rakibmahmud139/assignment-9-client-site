@@ -3,14 +3,17 @@ import Grid from "@mui/material/Grid";
 import { TLostItem } from "@/types";
 import LostItemCard from "./LostItemCard";
 
-export const getResentLostItem = async () => {
-  const res = await fetch("http://localhost:5000/api/lost-items");
+export const getRecentLostItems = async () => {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/lost-items `, {
+    cache: "no-store",
+  });
   const data = await res.json();
   return data;
 };
 
 const ResentLostItem = async () => {
-  const lostItems = await getResentLostItem();
+  const lostItems = await getRecentLostItems();
+  console.log(lostItems?.data);
   return (
     <Box mt={16}>
       <Box mb={8}>
@@ -33,7 +36,7 @@ const ResentLostItem = async () => {
         </Typography>
         <Box mt={8}>
           <Grid container spacing={2}>
-            {lostItems?.data?.slice(0, 5).map((lostItem: TLostItem) => (
+            {lostItems?.data?.slice(0, 6)?.map((lostItem: TLostItem) => (
               <LostItemCard key={lostItem.id} lostItem={lostItem} />
             ))}
           </Grid>

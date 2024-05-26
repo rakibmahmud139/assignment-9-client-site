@@ -26,7 +26,7 @@ const HeroSection = () => {
         Their Lost Items!
       </Typography>
       <Box mt={8}>
-        <Link href="/lost-item">
+        <Link href="/submit-lostItem">
           <Button
             sx={{
               mr: "16px",
@@ -35,7 +35,7 @@ const HeroSection = () => {
             Report a Lost Item
           </Button>
         </Link>
-        <Link href="/found-item">
+        <Link href="/submit-foundItem">
           <Button variant="outlined">Report a Found Item</Button>
         </Link>
       </Box>

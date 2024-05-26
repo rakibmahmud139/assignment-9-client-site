@@ -30,6 +30,9 @@ const MenuItems = ({ handleCloseNavMenu }: TProps) => {
       <Link href={"/submit-lostItem"}>
         <Typography textAlign="center">Submit Lost Item</Typography>
       </Link>
+      <Link href={"/submit-foundItem"}>
+        <Typography textAlign="center">Submit Found Item</Typography>
+      </Link>
       <Link href={"/login"}>
         <Typography textAlign="center">Login</Typography>
       </Link>

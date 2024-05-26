@@ -1,14 +1,8 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "./globals.css";
-import { AppRouterCacheProvider } from "@mui/material-nextjs/v13-appRouter";
 import Providers from "@/lib/providers/Providers";
-import { Box, Container } from "@mui/material";
-import Navbar from "@/components/shared/Navbar";
-import Footer from "../components/shared/Footer";
+import { AppRouterCacheProvider } from "@mui/material-nextjs/v13-appRouter";
+import type { Metadata } from "next";
 import { Toaster } from "sonner";
-
-// const inter = Inter({ subsets: ["latin"] });
+import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Home",
@@ -24,19 +18,10 @@ export default function RootLayout({
       <html lang="en">
         <body>
           <AppRouterCacheProvider>
-            <Box
-              sx={{
-                backgroundColor: "#f4f7fe",
-              }}
-            >
-              <Container>
-                <Navbar />
-                <Box my={2}>
-                  <Toaster position="top-center" /> {children}
-                </Box>
-              </Container>
-              <Footer />
-            </Box>
+            <>
+              <Toaster position="top-center" />
+              {children}
+            </>
           </AppRouterCacheProvider>
         </body>
       </html>

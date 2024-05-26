@@ -1,21 +1,18 @@
 "use client";
 
+import { getUser } from "@/services/actions/getUser";
 import MenuIcon from "@mui/icons-material/Menu";
-import AppBar from "@mui/material/AppBar";
-import Avatar from "@mui/material/Avatar";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import IconButton from "@mui/material/IconButton";
 import Menu from "@mui/material/Menu";
-import MenuItem from "@mui/material/MenuItem";
 import Toolbar from "@mui/material/Toolbar";
-import Tooltip from "@mui/material/Tooltip";
 import Typography from "@mui/material/Typography";
 import Image from "next/image";
+import Link from "next/link";
 import * as React from "react";
 import logo from "../../assets/lost--found-high-resolution-logo-transparent.png";
 import MenuItems from "./MenuItem";
-import Link from "next/link";
 
 function Navbar() {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
@@ -24,6 +21,13 @@ function Navbar() {
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
   };
+
+  const [userRole, setUserRole] = React.useState("");
+
+  React.useEffect(() => {
+    const { role } = getUser() as any;
+    setUserRole(role);
+  }, []);
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
@@ -118,7 +122,7 @@ function Navbar() {
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
-            <Link href={"/my-profile"}>
+            <Link href={`/dashboard/${userRole}`}>
               <Typography>My Profile</Typography>
             </Link>
           </Box>
