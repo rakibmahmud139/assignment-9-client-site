@@ -64,6 +64,7 @@ export type DrawerItem = {
 export type UserRole = keyof typeof USER_ROLE;
 
 export type DecodedUser = {
+  id: string;
   name: string;
   email: string;
   role: "user" | "admin";

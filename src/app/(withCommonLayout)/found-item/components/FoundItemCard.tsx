@@ -38,7 +38,7 @@ const FoundItemCard = () => {
                     <Typography gutterBottom variant="h5" component="div">
                       {item?.foundItemName}
                     </Typography>
-                    <Typography gutterBottom variant="h5" component="div">
+                    <Typography variant="body2" color="text.secondary">
                       Location: {item?.location}
                     </Typography>
                     <Typography variant="body2" color="text.secondary">
@@ -54,7 +54,11 @@ const FoundItemCard = () => {
                   >
                     Claim
                   </Button>
-                  <ClaimModal open={isOpenModal} setOpen={setIsOpenModal} />
+                  <ClaimModal
+                    open={isOpenModal}
+                    setOpen={setIsOpenModal}
+                    foundItemId={item?.id}
+                  />
                 </CardActions>
               </Card>
             </Grid>
