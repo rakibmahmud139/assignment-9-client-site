@@ -1,13 +1,23 @@
 import { USER_ROLE } from "@/constant/role";
 import { DrawerItem, UserRole } from "@/types";
-import PersonIcon from "@mui/icons-material/Person";
-import DashboardIcon from "@mui/icons-material/Dashboard";
+import CategoryIcon from "@mui/icons-material/Category";
+import EqualizerIcon from "@mui/icons-material/Equalizer";
 import GroupIcon from "@mui/icons-material/Group";
 import KeyIcon from "@mui/icons-material/Key";
-import MedicalInformationIcon from "@mui/icons-material/MedicalInformation";
+import PeopleIcon from "@mui/icons-material/People";
+import PersonIcon from "@mui/icons-material/Person";
+import ProductionQuantityLimitsIcon from "@mui/icons-material/ProductionQuantityLimits";
 
 export const drawerItems = (role: UserRole): DrawerItem[] => {
   const roleMenus: DrawerItem[] = [];
+
+  const defaultMenus = [
+    {
+      title: "Change Password",
+      path: `change-password`,
+      icon: KeyIcon,
+    },
+  ];
 
   switch (role) {
     case USER_ROLE.USER:
@@ -38,24 +48,24 @@ export const drawerItems = (role: UserRole): DrawerItem[] => {
     case USER_ROLE.ADMIN:
       roleMenus.push(
         {
-          title: "Profile",
-          path: `${role}`,
-          icon: PersonIcon,
-        },
-        {
           title: "User Management",
           path: `${role}/user-management`,
-          icon: MedicalInformationIcon,
+          icon: PeopleIcon,
         },
         {
-          title: "Recent Posts",
-          path: `${role}/recent-posts`,
-          icon: MedicalInformationIcon,
+          title: "metrics",
+          path: `${role}`,
+          icon: EqualizerIcon,
         },
         {
-          title: "Change Password",
-          path: `change-password`,
-          icon: KeyIcon,
+          title: "Recent Lost Items",
+          path: `${role}/lost-items`,
+          icon: CategoryIcon,
+        },
+        {
+          title: "Recent Found Items",
+          path: `${role}/found-items`,
+          icon: ProductionQuantityLimitsIcon,
         }
       );
 
@@ -65,5 +75,5 @@ export const drawerItems = (role: UserRole): DrawerItem[] => {
       break;
   }
 
-  return [...roleMenus];
+  return [...roleMenus, ...defaultMenus];
 };

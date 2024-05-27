@@ -71,7 +71,7 @@ export default function DashboardDrawer({
           >
             <Box>
               <Typography variant="body2" noWrap component="div" color="gray">
-                Hi, Rakib Mahmud
+                Hi,
               </Typography>
               <Typography
                 variant="body2"
@@ -79,16 +79,11 @@ export default function DashboardDrawer({
                 component="div"
                 color="primary.main"
               >
-                Welcome To, Lost and Found Website !
+                Welcome To, Lost & Found Website !
               </Typography>
             </Box>
             <Stack direction="row" gap={3}>
-              <Badge badgeContent={1} color="primary">
-                <IconButton sx={{ backgroundColor: "#ffffff" }}>
-                  <NotificationsNoneIcon color="action" />
-                </IconButton>
-              </Badge>
-              {/* <Avatar alt={data?.name} src={data?.profilePhoto} /> */}
+              Profile
             </Stack>
           </Box>
         </Toolbar>
@@ -137,6 +132,7 @@ export default function DashboardDrawer({
           flexGrow: 1,
           p: 3,
           width: { sm: `calc(100% - ${drawerWidth}px)` },
+          height: { sm: "100%", md: "700px" },
         }}
       >
         <Toolbar />
