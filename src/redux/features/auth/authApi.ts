@@ -9,7 +9,24 @@ const reviewApi = baseApi.injectEndpoints({
         body: data,
       }),
     }),
+    getMyProfile: builder.query({
+      query: () => ({
+        url: "/my-profile",
+        method: "GET",
+      }),
+    }),
+    updateMyProfile: builder.mutation({
+      query: (data) => ({
+        url: "/my-profile",
+        method: "PUT",
+        body: data,
+      }),
+    }),
   }),
 });
 
-export const { useChangePasswordMutation } = reviewApi;
+export const {
+  useChangePasswordMutation,
+  useGetMyProfileQuery,
+  useUpdateMyProfileMutation,
+} = reviewApi;

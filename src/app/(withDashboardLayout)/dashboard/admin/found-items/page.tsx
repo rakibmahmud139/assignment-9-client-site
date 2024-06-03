@@ -1,6 +1,5 @@
-import FoundItemCard from "@/app/(withCommonLayout)/found-item/components/FoundItemCard";
 import Heading from "@/components/shared/Heading";
-import { Box, Grid, TextField, Typography } from "@mui/material";
+import { Box } from "@mui/material";
 import FoundItemsCard from "./components/FoundItemsCard";
 
 const FoundItemsPage = () => {

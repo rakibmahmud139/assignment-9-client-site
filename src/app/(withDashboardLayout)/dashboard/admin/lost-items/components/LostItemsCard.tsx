@@ -1,7 +1,6 @@
 "use client";
 
-import { useGetFoundItemQuery } from "@/redux/features/foundItem/foundItemApi";
-import { useDebounce } from "@/redux/hooks";
+import { useGetLostItemQuery } from "@/redux/features/lostItem/lostItemApi";
 import { Box, Button, Grid, TextField } from "@mui/material";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
@@ -10,9 +9,10 @@ import Typography from "@mui/material/Typography";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import { TFoundItem } from "../../../../../../types/common";
+import { TLostItem } from "../../../../../../types/common";
+import { useDebounce } from "@/redux/hooks";
 
-const FoundItemsCard = () => {
+const LostItemsCard = () => {
   const query: Record<string, unknown> = {};
   const [searchTerm, setSearchTerm] = useState("");
 
@@ -25,7 +25,7 @@ const FoundItemsCard = () => {
     query["searchTerm"] = searchTerm;
   }
 
-  const { data: foundItems } = useGetFoundItemQuery({ ...query });
+  const { data: LostItems } = useGetLostItemQuery({ ...query });
 
   return (
     <Box>
@@ -36,7 +36,7 @@ const FoundItemsCard = () => {
         alignItems="center"
         mb={8}
       >
-        Filter & Search:{" "}
+        Filter & Search:
         <TextField
           onChange={(e) => setSearchTerm(e.target.value)}
           size="small"
@@ -44,26 +44,26 @@ const FoundItemsCard = () => {
       </Typography>
 
       <Grid container spacing={2}>
-        {foundItems?.data?.map((foundItem: TFoundItem) => (
-          <Grid key={foundItem?.id} item md={4}>
+        {LostItems?.data?.map((lostItem: TLostItem) => (
+          <Grid key={lostItem?.id} item md={4}>
             <Card sx={{ maxWidth: 345 }}>
               <Image
-                src={foundItem?.photo}
-                alt="FoundItemImage"
+                src={lostItem?.photo}
+                alt="lostItemImage"
                 width={345}
                 height={120}
               />
               <CardContent>
                 <Typography gutterBottom variant="h5" component="div">
-                  {foundItem?.foundItemName}
+                  {lostItem?.lostItemName}
                 </Typography>
-                <Typography>Location: {foundItem?.location}</Typography>
+                <Typography>Location: {lostItem?.location}</Typography>
                 <Typography variant="body2" color="text.secondary">
-                  Description: {foundItem?.description}
+                  Description: {lostItem?.description}
                 </Typography>
               </CardContent>
               <CardActions>
-                <Link href={`/lost-items/${foundItem?.id}`}>
+                <Link href={`/lost-items/${lostItem?.id}`}>
                   <Button>details</Button>
                 </Link>
               </CardActions>
@@ -75,4 +75,4 @@ const FoundItemsCard = () => {
   );
 };
 
-export default FoundItemsCard;
+export default LostItemsCard;
