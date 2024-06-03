@@ -15,7 +15,7 @@ import {
 } from "@mui/material";
 import Image from "next/image";
 import { useState } from "react";
-const FoundItemCard = () => {
+const FoundItemsCard = () => {
   const [isOpenModal, setIsOpenModal] = useState<boolean>(false);
 
   const { data: foundItems } = useGetFoundItemQuery({});
@@ -69,4 +69,4 @@ const FoundItemCard = () => {
   );
 };
 
-export default FoundItemCard;
+export default FoundItemsCard;
