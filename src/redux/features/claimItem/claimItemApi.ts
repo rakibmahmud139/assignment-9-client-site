@@ -22,4 +22,4 @@ const claimItemApi = baseApi.injectEndpoints({
   }),
 });
 
-export const { useClaimItemMutation, useLazyGetClaimItemQuery } = claimItemApi;
+export const { useClaimItemMutation, useGetClaimItemQuery } = claimItemApi;

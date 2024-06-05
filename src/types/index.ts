@@ -39,6 +39,7 @@ export type TLostItem = {
   isFound?: string | null;
   contactNumber: string | null;
   photo: string | StaticImport;
+  date: string;
   createdAt: string;
   updatedAt: string;
   user: TUser;
