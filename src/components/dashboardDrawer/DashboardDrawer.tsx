@@ -1,8 +1,8 @@
 "use client";
 
+import { useGetMyProfileQuery } from "@/redux/features/auth/authApi";
 import MenuIcon from "@mui/icons-material/Menu";
-import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
-import { Badge, Stack } from "@mui/material";
+import { Avatar, Button, Stack } from "@mui/material";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -12,6 +12,9 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import * as React from "react";
 import Sidebar from "./Sidebar";
+import LogoutIcon from "@mui/icons-material/Logout";
+import { logout } from "@/utils/localStorage";
+import { authKey } from "@/types";
 
 const drawerWidth = 240;
 
@@ -22,6 +25,12 @@ export default function DashboardDrawer({
 }) {
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [isClosing, setIsClosing] = React.useState(false);
+
+  const { data: user } = useGetMyProfileQuery({});
+
+  const handleLogout = () => {
+    logout(authKey);
+  };
 
   const handleDrawerClose = () => {
     setIsClosing(true);
@@ -71,7 +80,7 @@ export default function DashboardDrawer({
           >
             <Box>
               <Typography variant="body2" noWrap component="div" color="gray">
-                Hi,
+                Hi, {user?.data?.user?.name}
               </Typography>
               <Typography
                 variant="body2"
@@ -83,7 +92,7 @@ export default function DashboardDrawer({
               </Typography>
             </Box>
             <Stack direction="row" gap={3}>
-              Profile
+              <Avatar alt={user?.data?.user?.name} src={user?.data?.photoUrl} />
             </Stack>
           </Box>
         </Toolbar>
@@ -111,6 +120,14 @@ export default function DashboardDrawer({
           }}
         >
           <Sidebar />
+          <Button
+            onClick={() => handleLogout()}
+            sx={{
+              mt: "32px",
+            }}
+          >
+            <LogoutIcon />
+          </Button>
         </Drawer>
         <Drawer
           variant="permanent"
@@ -124,6 +141,17 @@ export default function DashboardDrawer({
           open
         >
           <Sidebar />
+          <Button
+            onClick={() => handleLogout()}
+            sx={{
+              mt: "32px",
+              width: "25%",
+              ml: "16px",
+            }}
+            variant="outlined"
+          >
+            <LogoutIcon />
+          </Button>
         </Drawer>
       </Box>
       <Box
@@ -132,6 +160,7 @@ export default function DashboardDrawer({
           flexGrow: 1,
           p: 3,
           width: { sm: `calc(100% - ${drawerWidth}px)` },
+          height: "100%",
         }}
       >
         <Toolbar />

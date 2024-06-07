@@ -1,5 +1,5 @@
 import { authKey } from "@/types";
-import { getFromLocalStorage } from "@/utils/localStorage";
+import { getFromLocalStorage, logout } from "@/utils/localStorage";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 export const baseApi = createApi({
@@ -11,6 +11,8 @@ export const baseApi = createApi({
 
       if (token) {
         headers.set("authorization", `${token}`);
+      } else {
+        window.location.href = "/login";
       }
 
       return headers;

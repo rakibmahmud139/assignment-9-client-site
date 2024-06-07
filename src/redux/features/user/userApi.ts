@@ -11,6 +11,14 @@ const userApi = baseApi.injectEndpoints({
       providesTags: ["user"],
     }),
 
+    getSingleUser: builder.query({
+      query: (id) => ({
+        url: `/user/${id}`,
+        method: "GET",
+      }),
+      providesTags: ["user"],
+    }),
+
     updateUser: builder.mutation({
       query: (data) => ({
         url: `/user/${data?.id}`,
@@ -31,6 +39,7 @@ const userApi = baseApi.injectEndpoints({
 
 export const {
   useGetAllUserQuery,
+  useGetSingleUserQuery,
   useDeleteUserMutation,
   useUpdateUserMutation,
 } = userApi;

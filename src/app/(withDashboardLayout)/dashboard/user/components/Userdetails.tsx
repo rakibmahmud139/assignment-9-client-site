@@ -9,16 +9,16 @@ import Link from "next/link";
 const UserDetails = () => {
   const { data: myProfile } = useGetMyProfileQuery({});
 
-  console.log(myProfile);
   return (
     <Box>
       <Box
         position="relative"
-        right={-900}
+        right={-864}
         top={40}
         bgcolor="white"
         width="32px"
         borderRadius={48}
+        textAlign="center"
         pl={1}
         pr={1}
       >
@@ -28,44 +28,42 @@ const UserDetails = () => {
       </Box>
       <Stack
         direction="row"
-        gap={8}
-        justifyContent="center"
         alignItems="center"
         bgcolor="pink"
         borderRadius={6}
         width="50%"
         mx="auto"
-        p={8}
+        p={4}
         boxShadow={16}
       >
         <Box>
-          {myProfile?.data?.photoUrl ? (
-            <Image
-              src={myProfile?.data?.photoUrl}
-              alt="profile"
-              width={96}
-              height={96}
-            />
-          ) : (
-            <Avatar
-              sx={{ width: 96, height: 96, mb: 4 }}
-              src="/broken-image.jpg"
-            />
-          )}
-          <Typography>{myProfile?.data?.bio}</Typography>
+          <Avatar
+            alt={myProfile?.data?.user?.name}
+            src={myProfile?.data?.photoUrl}
+            sx={{ width: 120, height: 120, mb: "32px" }}
+          />
+
+          <Typography width="50%">{myProfile?.data?.bio}</Typography>
         </Box>
         <Box>
-          <Typography variant="h3" mb={4}>
+          <Typography component="h1" variant="h4" mb={4}>
             {myProfile?.data?.user?.name}
           </Typography>
           <Typography fontStyle="oblique">
-            Role :<Typography>{myProfile?.data?.user?.role}</Typography>
+            Role :
+            <Typography component="span">
+              {myProfile?.data?.user?.role}
+            </Typography>
           </Typography>
           <Typography fontStyle="oblique" mt={2}>
-            Email :<Typography>{myProfile?.data?.user?.email}</Typography>
+            Email :
+            <Typography component="span">
+              {myProfile?.data?.user?.email}
+            </Typography>
           </Typography>
           <Typography fontStyle="oblique" mt={2}>
-            Age :<Typography>{myProfile?.data?.age}</Typography>
+            Age :
+            <Typography component="span">{myProfile?.data?.age}</Typography>
           </Typography>
         </Box>
       </Stack>

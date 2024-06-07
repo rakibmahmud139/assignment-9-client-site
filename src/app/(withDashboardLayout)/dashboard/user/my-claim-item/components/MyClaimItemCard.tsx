@@ -19,17 +19,15 @@ const MyClaimItemCard = () => {
     email: user?.data?.user?.email,
   });
 
-  console.log(claimItems);
-
   return (
     <div>
       <Grid container spacing={2}>
         {claimItems?.data?.map((claimItem) => (
           <Grid key={claimItem?.id} item md={4}>
-            <Card sx={{ maxWidth: 345 }}>
+            <Card sx={{ maxWidth: 345, maxHeight: 600 }}>
               <Image
                 src={claimItem?.photo}
-                alt="FoundItemImage"
+                alt="claimPhoto"
                 width={345}
                 height={120}
               />

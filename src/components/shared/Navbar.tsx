@@ -25,8 +25,8 @@ function Navbar() {
   const [userRole, setUserRole] = React.useState("");
 
   React.useEffect(() => {
-    const { role } = getUser() as any;
-    setUserRole(role);
+    const user = getUser() as any;
+    setUserRole(user?.role);
   }, []);
 
   const handleCloseNavMenu = () => {
@@ -121,11 +121,13 @@ function Navbar() {
             <MenuItems />
           </Box>
 
-          <Box sx={{ flexGrow: 0 }}>
-            <Link href={`/dashboard/${userRole}`}>
-              <Typography>My Profile</Typography>
-            </Link>
-          </Box>
+          {userRole && (
+            <Box sx={{ flexGrow: 0 }}>
+              <Link href={`/dashboard/${userRole}`}>
+                <Typography>My Profile</Typography>
+              </Link>
+            </Box>
+          )}
         </Toolbar>
       </Container>
     </Box>

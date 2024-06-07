@@ -1,5 +1,5 @@
 import { TLostItem } from "@/types";
-import { Button, Grid } from "@mui/material";
+import { Button, CardMedia, Grid } from "@mui/material";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
@@ -17,9 +17,9 @@ const LostItemCard = ({ lostItem }: TProps) => {
       <Card sx={{ maxWidth: 345 }}>
         <Image
           src={lostItem?.photo}
-          alt="LostItemImage"
-          width={345}
-          height={120}
+          width={500}
+          height={100}
+          alt="product image"
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">

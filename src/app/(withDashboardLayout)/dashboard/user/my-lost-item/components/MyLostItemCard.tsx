@@ -1,7 +1,10 @@
 "use client";
 
 import { useGetMyProfileQuery } from "@/redux/features/auth/authApi";
-import { useGetLostItemQuery } from "@/redux/features/lostItem/lostItemApi";
+import {
+  useDeleteLostItemMutation,
+  useGetLostItemQuery,
+} from "@/redux/features/lostItem/lostItemApi";
 import { TLostItem } from "@/types";
 import {
   Button,
@@ -13,15 +16,22 @@ import {
 } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
+import { toast } from "sonner";
 
 const MyLostItemCard = () => {
   const { data: user } = useGetMyProfileQuery({});
+  const [deleteLostItem] = useDeleteLostItemMutation();
+
   const { data: lostItems } = useGetLostItemQuery({
     email: user?.data?.user?.email,
   });
 
-  const handleDelete = (id: string) => {
-    console.log(id);
+  const handleDelete = async (id: string) => {
+    const res = await deleteLostItem(id).unwrap();
+
+    if (res?.success) {
+      toast.success(res.message);
+    }
   };
 
   return (
@@ -29,12 +39,12 @@ const MyLostItemCard = () => {
       <Grid container spacing={2}>
         {lostItems?.data?.map((lostItem: TLostItem) => (
           <Grid key={lostItem?.id} item md={4}>
-            <Card sx={{ maxWidth: 345 }}>
+            <Card sx={{ maxWidth: 345, maxHeight: 600 }}>
               <Image
                 src={lostItem?.photo}
                 alt="lostItemImage"
                 width={345}
-                height={120}
+                height={60}
               />
               <CardContent>
                 <Typography gutterBottom variant="h5" component="div">

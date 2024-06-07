@@ -14,10 +14,12 @@ export const getFromLocalStorage = (key: string) => {
   return localStorage.getItem(key);
 };
 
-export const removeFromLocalStorage = (key: string) => {
+export const logout = (key: string) => {
   if (!key || typeof window === "undefined") {
     return "";
   }
 
-  return localStorage.removeItem(key);
+  localStorage.removeItem(key);
+
+  window.location.href = "/login";
 };

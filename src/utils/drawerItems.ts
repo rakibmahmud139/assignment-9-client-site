@@ -7,6 +7,7 @@ import KeyIcon from "@mui/icons-material/Key";
 import PeopleIcon from "@mui/icons-material/People";
 import PersonIcon from "@mui/icons-material/Person";
 import ProductionQuantityLimitsIcon from "@mui/icons-material/ProductionQuantityLimits";
+import WidgetsIcon from "@mui/icons-material/Widgets";
 
 export const drawerItems = (role: UserRole): DrawerItem[] => {
   const roleMenus: DrawerItem[] = [];
@@ -30,17 +31,17 @@ export const drawerItems = (role: UserRole): DrawerItem[] => {
         {
           title: "My Claim Item",
           path: `${role}/my-claim-item`,
-          icon: GroupIcon,
+          icon: WidgetsIcon,
         },
         {
           title: "My Lost Item",
           path: `${role}/my-lost-item`,
-          icon: GroupIcon,
+          icon: WidgetsIcon,
         },
         {
           title: "My Found Item",
           path: `${role}/my-found-item`,
-          icon: GroupIcon,
+          icon: WidgetsIcon,
         }
       );
       break;

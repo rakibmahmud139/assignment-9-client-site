@@ -1,32 +1,18 @@
 import { Box, Stack, Typography } from "@mui/material";
 import imageAboutUs from "../../../assets/9318688.jpg";
 import Image from "next/image";
+import Heading from "@/components/shared/Heading";
 
 const AboutUs = () => {
   return (
     <Box mt={16}>
       <Box mb={8}>
-        <Typography
-          textAlign="center"
-          component="h1"
-          variant="h4"
-          borderBottom={1}
-          width={320}
-          mx="auto"
-        >
-          <Typography component="span" color="gold" fontSize="36px">
-            ***
-          </Typography>
-          About Us
-          <Typography component="span" color="gold" fontSize="36px">
-            ***
-          </Typography>
-        </Typography>
+        <Heading title="About US" />
       </Box>
 
       <Stack direction="row" justifyItems="space-between" alignItems="center">
         <Box>
-          <Typography variant="h5" color="navy" mb={2}>
+          <Typography component="h1" variant="h4" color="navy" mb={2}>
             Purpose and Mission
           </Typography>
           <Typography width="75%">

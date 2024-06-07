@@ -1,7 +1,10 @@
 "use client";
 
 import { useGetMyProfileQuery } from "@/redux/features/auth/authApi";
-import { useGetFoundItemQuery } from "@/redux/features/foundItem/foundItemApi";
+import {
+  useDeleteFoundItemMutation,
+  useGetFoundItemQuery,
+} from "@/redux/features/foundItem/foundItemApi";
 import { TFoundItem } from "@/types/common";
 import {
   Box,
@@ -14,15 +17,22 @@ import {
 } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
+import { toast } from "sonner";
 
 const MyFoundItemCard = () => {
   const { data: user } = useGetMyProfileQuery({});
+  const [deleteFoundItem] = useDeleteFoundItemMutation();
+
   const { data: foundItems } = useGetFoundItemQuery({
     email: user?.data?.user?.email,
   });
 
-  const handleDelete = (id: string) => {
-    console.log(id);
+  const handleDelete = async (id: string) => {
+    const res = await deleteFoundItem(id).unwrap();
+
+    if (res?.success) {
+      toast.success(res.message);
+    }
   };
 
   return (

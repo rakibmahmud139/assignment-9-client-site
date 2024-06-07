@@ -4,7 +4,7 @@ import ChangePasswordForm from "./components/ChangePasswordForm";
 
 const ChangePasswordPage = () => {
   return (
-    <Box>
+    <Box mb={28}>
       <Typography
         textAlign="center"
         component="h1"

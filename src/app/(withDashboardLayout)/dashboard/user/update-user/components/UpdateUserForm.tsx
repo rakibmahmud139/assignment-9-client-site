@@ -1,3 +1,5 @@
+"use client";
+
 import FLForms from "@/components/forms/FLForms";
 import FLInput from "@/components/forms/FLInput";
 import FileUploader from "@/components/forms/FileUploader";
@@ -30,7 +32,7 @@ const UpdateUserForm = () => {
       console.log(res);
       if (res.success) {
         toast.success(res.message);
-        router.refresh();
+        router.push("/dashboard/user");
       }
     } else if (!photoUrl) {
       const updateData = {
@@ -39,10 +41,10 @@ const UpdateUserForm = () => {
       };
 
       const res = await updateProfile(updateData).unwrap();
-      console.log(res);
+
       if (res.success) {
         toast.success(res.message);
-        router.refresh();
+        router.push("/dashboard/user");
       }
     }
   };

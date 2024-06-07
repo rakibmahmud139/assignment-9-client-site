@@ -3,7 +3,7 @@ import UserDetails from "./components/Userdetails";
 
 const UserPage = () => {
   return (
-    <Box>
+    <Box mb={36}>
       <UserDetails />
     </Box>
   );
