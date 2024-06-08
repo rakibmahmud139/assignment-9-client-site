@@ -6,6 +6,8 @@ https://assignment-9-client-site-tau.vercel.app/
 
 ## here website showcase video link
 
+https://drive.google.com/file/d/1AnT2EshdzRRWPt05gpkwBraaGDlCQllJ/view?usp=sharing
+
 ## admin login info
 
 email: admin@gmail.com
