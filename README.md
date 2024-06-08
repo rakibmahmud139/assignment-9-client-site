@@ -1,37 +1,32 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+Hi, I am Rakib Mahmud .My website name is Lost&found This is a website which has many features. Here you can report for your any lost item which you lost. You can here report if you found items. You can also claim item from here.
 
-## Getting Started
+## Here live link my website
 
-First, run the development server:
+https://assignment-9-client-site-tau.vercel.app/
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## here website showcase video link
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## admin login info
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+email: admin@gmail.com
+password: 123456
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## user login info
 
-## Learn More
+email: user@ph.com
+password: 123456
 
-To learn more about Next.js, take a look at the following resources:
+## for run this website in your local machine follow these steps
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. go here https://github.com/rakibmahmud139/assignment-9-client-site
+2. clone this repository
+3. then command npm i
+4. then command npm run dev
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## this website use following technologies
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
-# assignment-9-client-site
+1. next.js
+2. mui/materialUI
+3. daisyUI
+4. npm
+   5 git etc
