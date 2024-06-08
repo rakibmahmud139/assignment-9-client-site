@@ -9,7 +9,7 @@ import { MouseEventHandler } from "react";
 
 type TProps = {
   handleCloseNavMenu?: MouseEventHandler<HTMLLIElement>;
-  role: string;
+  role?: string | null;
 };
 
 const MenuItems = ({ handleCloseNavMenu, role }: TProps) => {

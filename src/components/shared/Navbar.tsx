@@ -13,7 +13,9 @@ import Link from "next/link";
 import * as React from "react";
 import logo from "../../assets/lost--found-high-resolution-logo-transparent.png";
 import MenuItems from "./MenuItem";
-import { TDecodedUser } from "@/types";
+import { DecodedUser, TDecodedUser, authKey } from "@/types";
+import { getFromLocalStorage } from "@/utils/localStorage";
+import { jwtDecode } from "jwt-decode";
 
 function Navbar() {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
@@ -23,18 +25,21 @@ function Navbar() {
     setAnchorElNav(event.currentTarget);
   };
 
+  const user = getFromLocalStorage(authKey);
   const [userRole, setUserRole] = React.useState("");
 
   React.useEffect(() => {
-    const userInfo = async () => {
-      const user = (await getUser()) as TDecodedUser | undefined;
-      if (user && user.role) {
-        setUserRole(user.role);
-      }
-    };
+    if (!userRole) {
+      const userInfo = () => {
+        const user = getUser() as TDecodedUser | undefined;
+        if (user && user.role) {
+          setUserRole(user.role);
+        }
+      };
 
-    userInfo();
-  }, []);
+      userInfo();
+    }
+  }, [userRole]);
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
@@ -96,10 +101,7 @@ function Navbar() {
                 display: { xs: "block", md: "none" },
               }}
             >
-              <MenuItems
-                handleCloseNavMenu={handleCloseNavMenu}
-                role={userRole}
-              />
+              <MenuItems handleCloseNavMenu={handleCloseNavMenu} role={user} />
             </Menu>
           </Box>
           <Typography
@@ -128,10 +130,10 @@ function Navbar() {
               },
             }}
           >
-            <MenuItems role={userRole} />
+            <MenuItems role={user} />
           </Box>
 
-          {userRole && (
+          {user && (
             <Box sx={{ flexGrow: 0 }}>
               <Link href={`/dashboard/${userRole}`}>
                 <Typography>My Profile</Typography>

@@ -47,6 +47,7 @@ const MyFoundItemCard = () => {
                 alt="FoundItemImage"
                 width={345}
                 height={120}
+                style={{ height: 200 }}
               />
               <CardContent>
                 <Typography gutterBottom variant="h5" component="div">

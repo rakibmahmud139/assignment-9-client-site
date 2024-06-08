@@ -45,6 +45,7 @@ const MyLostItemCard = () => {
                 alt="lostItemImage"
                 width={345}
                 height={60}
+                style={{ height: 200 }}
               />
               <CardContent>
                 <Typography gutterBottom variant="h5" component="div">

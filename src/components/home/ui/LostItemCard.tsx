@@ -1,5 +1,5 @@
 import { TLostItem } from "@/types";
-import { Button, CardMedia, Grid } from "@mui/material";
+import { Box, Button, CardMedia, Grid } from "@mui/material";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
@@ -15,12 +15,15 @@ const LostItemCard = ({ lostItem }: TProps) => {
   return (
     <Grid item md={4}>
       <Card sx={{ maxWidth: 345 }}>
-        <Image
-          src={lostItem?.photo}
-          width={500}
-          height={100}
-          alt="product image"
-        />
+        <Box>
+          <Image
+            src={lostItem?.photo}
+            width={500}
+            height={60}
+            alt="product image"
+            style={{ height: 200 }}
+          />
+        </Box>
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
             {lostItem?.lostItemName}
