@@ -48,6 +48,16 @@ export type TLostItem = {
 
 export const authKey = "accessToken";
 
+export type TDecodedUser = {
+  role: "user" | "admin";
+  id: string;
+  name: string;
+  email: string;
+  photoUrl: string;
+  iat: number;
+  exp: number;
+};
+
 export type TMeta = {
   page?: number;
   limit?: number;

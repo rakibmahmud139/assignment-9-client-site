@@ -40,6 +40,15 @@ const FoundItemForm = () => {
     }
   };
 
+  const defaultValues = {
+    categoryId: data?.categoryId,
+    foundItemName: "",
+    description: "",
+    location: "",
+    contactNumber: "",
+    photo: "",
+  };
+
   return (
     <Container>
       {isLoading ? (
@@ -55,7 +64,7 @@ const FoundItemForm = () => {
           <CircularProgress />
         </Box>
       ) : (
-        <FLForms onSubmit={handleSubmitLostItem}>
+        <FLForms onSubmit={handleSubmitLostItem} defaultValues={defaultValues}>
           <Grid container spacing={4}>
             <Grid item md={6} xs={12}>
               <FLInput

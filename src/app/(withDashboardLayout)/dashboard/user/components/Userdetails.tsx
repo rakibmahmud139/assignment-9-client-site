@@ -13,7 +13,10 @@ const UserDetails = () => {
     <Box>
       <Box
         position="relative"
-        right={-864}
+        right={{
+          md: -864,
+          xs: -308,
+        }}
         top={40}
         bgcolor="white"
         width="32px"
@@ -27,12 +30,18 @@ const UserDetails = () => {
         </Link>
       </Box>
       <Stack
-        direction="row"
+        direction={{ xs: "column", md: "row" }}
+        gap={{ xs: 4 }}
         alignItems="center"
         bgcolor="pink"
         borderRadius={6}
-        width="50%"
-        mx="auto"
+        width={{
+          md: "50%",
+          xs: "100%",
+        }}
+        mx={{
+          md: "auto",
+        }}
         p={4}
         boxShadow={16}
       >
@@ -43,7 +52,7 @@ const UserDetails = () => {
             sx={{ width: 120, height: 120, mb: "32px" }}
           />
 
-          <Typography width="50%">{myProfile?.data?.bio}</Typography>
+          <Typography width={{ md: "50%" }}>{myProfile?.data?.bio}</Typography>
         </Box>
         <Box>
           <Typography component="h1" variant="h4" mb={4}>

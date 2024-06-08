@@ -5,7 +5,16 @@ const AboutPage = () => {
   return (
     <Box mb={12}>
       <Box>
-        <Typography component="h1" variant="h3" color="skyblue" mb={12} mt={6}>
+        <Typography
+          component="h1"
+          fontSize={{
+            md: "48px",
+            xs: "32px",
+          }}
+          color="skyblue"
+          mb={12}
+          mt={6}
+        >
           Purpose and Mission
         </Typography>
         <Typography component="p">
@@ -19,7 +28,16 @@ const AboutPage = () => {
         </Typography>
       </Box>
       <Box>
-        <Typography component="h1" variant="h3" color="skyblue" mb={16} mt={12}>
+        <Typography
+          component="h1"
+          fontSize={{
+            md: "48px",
+            xs: "32px",
+          }}
+          color="skyblue"
+          mb={16}
+          mt={12}
+        >
           Our Dedicated Team
         </Typography>
         <AboutCard />

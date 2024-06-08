@@ -2,44 +2,50 @@
 
 import { authKey } from "@/types";
 import { getFromLocalStorage } from "@/utils/localStorage";
-import { Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import MenuItem from "@mui/material/MenuItem";
 import Link from "next/link";
 import { MouseEventHandler } from "react";
 
 type TProps = {
   handleCloseNavMenu?: MouseEventHandler<HTMLLIElement>;
+  role: string;
 };
 
-const MenuItems = ({ handleCloseNavMenu }: TProps) => {
-  const user = getFromLocalStorage(authKey);
-
+const MenuItems = ({ handleCloseNavMenu, role }: TProps) => {
   return (
-    <MenuItem
-      onClick={handleCloseNavMenu}
-      sx={{
-        gap: {
-          md: 5,
-        },
-        flexDirection: {
-          xs: "column",
-          md: "row",
-        },
-        display: {
-          xs: "flex",
-        },
-      }}
-    >
-      <Link href={"/about"}>
-        <Typography textAlign="center">About Us</Typography>
-      </Link>
-
-      {!user && (
-        <Link href={"/login"}>
-          <Typography textAlign="center">Login</Typography>
-        </Link>
-      )}
-    </MenuItem>
+    <Box>
+      <MenuItem
+        onClick={handleCloseNavMenu}
+        sx={{
+          gap: {
+            md: 5,
+          },
+          flexDirection: {
+            xs: "column",
+            md: "row",
+          },
+          display: {
+            xs: "flex",
+          },
+        }}
+      >
+        {role ? (
+          <Link href={"/about"}>
+            <Typography textAlign="center">About Us</Typography>
+          </Link>
+        ) : (
+          <>
+            <Link href={"/about"}>
+              <Typography textAlign="center">About Us</Typography>
+            </Link>
+            <Link href={"/login"}>
+              <Typography textAlign="center">Login</Typography>
+            </Link>
+          </>
+        )}
+      </MenuItem>
+    </Box>
   );
 };
 

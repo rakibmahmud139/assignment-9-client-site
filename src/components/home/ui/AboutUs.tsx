@@ -10,9 +10,22 @@ const AboutUs = () => {
         <Heading title="About US" />
       </Box>
 
-      <Stack direction="row" justifyItems="space-between" alignItems="center">
+      <Stack
+        direction={{ md: "row", xs: "column-reverse" }}
+        justifyItems="space-between"
+        gap={6}
+        alignItems="center"
+      >
         <Box>
-          <Typography component="h1" variant="h4" color="navy" mb={2}>
+          <Typography
+            component="h1"
+            variant="h4"
+            color="navy"
+            mb={2}
+            pl={1}
+            borderLeft={8}
+            borderColor="rosybrown"
+          >
             Purpose and Mission
           </Typography>
           <Typography width="75%">

@@ -18,6 +18,7 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 import { toast } from "sonner";
+import UpdateStatus from "./UpdateStatus";
 
 const MyFoundItemCard = () => {
   const { data: user } = useGetMyProfileQuery({});
@@ -59,6 +60,7 @@ const MyFoundItemCard = () => {
                   <Typography variant="h6">Date:</Typography>
                   {foundItem?.date?.substring(0, 10)}
                 </Typography>
+                <UpdateStatus id={foundItem?.id} />
               </CardContent>
               <CardActions
                 sx={{

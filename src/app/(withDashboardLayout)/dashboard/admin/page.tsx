@@ -4,7 +4,12 @@ import Heading from "@/components/shared/Heading";
 
 const MetricsPage = () => {
   return (
-    <Box mb={48}>
+    <Box
+      mb={{
+        md: 48,
+        xs: 8,
+      }}
+    >
       <Heading title="Data Metrics" />
       <Box>
         <MetricsData />

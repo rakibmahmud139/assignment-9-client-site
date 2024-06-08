@@ -5,7 +5,7 @@ import FoundItemsCard from "./components/FoundItemsCard";
 const FoundItemsPage = () => {
   return (
     <Box>
-      <Heading title="Found Items List" />
+      <Heading title="Found Items" />
 
       <Box mt={8}>
         <FoundItemsCard />

@@ -5,17 +5,37 @@ const Heading = ({ title }: { title: string }) => {
     <Typography
       textAlign="center"
       component="h1"
-      variant="h4"
+      fontSize={{
+        md: "36px",
+        xs: "24px",
+      }}
       borderBottom={1}
-      width={420}
+      width={{
+        md: 420,
+        xs: 332,
+      }}
       mx="auto"
       mb={8}
     >
-      <Typography component="span" color="gold" fontSize="36px">
+      <Typography
+        component="span"
+        color="gold"
+        fontSize={{
+          md: "36px",
+          xs: "24px",
+        }}
+      >
         ***
       </Typography>
       {title}
-      <Typography component="span" color="gold" fontSize="36px">
+      <Typography
+        component="span"
+        color="gold"
+        fontSize={{
+          md: "36px",
+          xs: "24px",
+        }}
+      >
         ***
       </Typography>
     </Typography>

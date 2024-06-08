@@ -2,6 +2,7 @@
 
 import ClaimModal from "@/components/claimModal/ClaimModal";
 import { useGetFoundItemQuery } from "@/redux/features/foundItem/foundItemApi";
+import { TFoundItem } from "@/types/common";
 import {
   Box,
   Button,
@@ -24,7 +25,7 @@ const FoundItemsCard = () => {
     <Box mb={4}>
       <Container>
         <Grid container spacing={4}>
-          {foundItems?.data?.map((item) => (
+          {foundItems?.data?.map((item: TFoundItem) => (
             <Grid key={item.id} item md={4} xs={12}>
               <Card sx={{ maxWidth: 600 }}>
                 <CardActionArea>

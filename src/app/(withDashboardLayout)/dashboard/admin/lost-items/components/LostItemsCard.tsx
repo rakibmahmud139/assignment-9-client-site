@@ -31,7 +31,9 @@ const LostItemsCard = () => {
     <Box>
       <Typography
         display="flex"
-        gap={2}
+        gap={{
+          md: 2,
+        }}
         justifyContent="center"
         alignItems="center"
         mb={8}
@@ -63,8 +65,8 @@ const LostItemsCard = () => {
                 </Typography>
               </CardContent>
               <CardActions>
-                <Link href={`/lost-items/${lostItem?.id}`}>
-                  <Button>details</Button>
+                <Link href={`/lost-items`}>
+                  <Button>All Lost Item</Button>
                 </Link>
               </CardActions>
             </Card>

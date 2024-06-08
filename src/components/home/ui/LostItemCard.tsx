@@ -31,8 +31,8 @@ const LostItemCard = ({ lostItem }: TProps) => {
           </Typography>
         </CardContent>
         <CardActions>
-          <Link href={`/lost-items/${lostItem?.id}`}>
-            <Button>details</Button>
+          <Link href={`/lost-items`}>
+            <Button>All Lost Item</Button>
           </Link>
         </CardActions>
       </Card>

@@ -2,16 +2,9 @@
 
 import { useGetMyProfileQuery } from "@/redux/features/auth/authApi";
 import { useGetClaimItemQuery } from "@/redux/features/claimItem/claimItemApi";
-import {
-  Button,
-  Card,
-  CardActions,
-  CardContent,
-  Grid,
-  Typography,
-} from "@mui/material";
+import { TClaimItem } from "@/types/claimItem/TClaimItem";
+import { Card, CardContent, Grid, Typography } from "@mui/material";
 import Image from "next/image";
-import Link from "next/link";
 
 const MyClaimItemCard = () => {
   const { data: user } = useGetMyProfileQuery({});
@@ -21,10 +14,10 @@ const MyClaimItemCard = () => {
 
   return (
     <div>
-      <Grid container spacing={2}>
-        {claimItems?.data?.map((claimItem) => (
+      <Grid container spacing={4}>
+        {claimItems?.data?.map((claimItem: TClaimItem) => (
           <Grid key={claimItem?.id} item md={4}>
-            <Card sx={{ maxWidth: 345, maxHeight: 600 }}>
+            <Card sx={{ maxWidth: 345, maxHeight: 600, mx: "auto" }}>
               <Image
                 src={claimItem?.photo}
                 alt="claimPhoto"
@@ -48,11 +41,6 @@ const MyClaimItemCard = () => {
                   {claimItem?.status}
                 </Typography>
               </CardContent>
-              <CardActions>
-                <Link href={`/lost-items/${claimItem?.id}`}>
-                  <Button>details</Button>
-                </Link>
-              </CardActions>
             </Card>
           </Grid>
         ))}

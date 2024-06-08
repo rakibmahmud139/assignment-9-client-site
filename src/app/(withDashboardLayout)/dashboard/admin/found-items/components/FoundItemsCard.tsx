@@ -31,7 +31,10 @@ const FoundItemsCard = () => {
     <Box>
       <Typography
         display="flex"
-        gap={2}
+        gap={{
+          md: 2,
+          xs: 1,
+        }}
         justifyContent="center"
         alignItems="center"
         mb={8}
@@ -62,11 +65,6 @@ const FoundItemsCard = () => {
                   Description: {foundItem?.description}
                 </Typography>
               </CardContent>
-              <CardActions>
-                <Link href={`/lost-items/${foundItem?.id}`}>
-                  <Button>details</Button>
-                </Link>
-              </CardActions>
             </Card>
           </Grid>
         ))}

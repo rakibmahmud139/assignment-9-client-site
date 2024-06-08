@@ -8,6 +8,7 @@ import PeopleIcon from "@mui/icons-material/People";
 import PersonIcon from "@mui/icons-material/Person";
 import ProductionQuantityLimitsIcon from "@mui/icons-material/ProductionQuantityLimits";
 import WidgetsIcon from "@mui/icons-material/Widgets";
+import AddIcon from "@mui/icons-material/Add";
 
 export const drawerItems = (role: UserRole): DrawerItem[] => {
   const roleMenus: DrawerItem[] = [];
@@ -67,6 +68,11 @@ export const drawerItems = (role: UserRole): DrawerItem[] => {
           title: "Recent Found Items",
           path: `${role}/found-items`,
           icon: ProductionQuantityLimitsIcon,
+        },
+        {
+          title: "Add Category",
+          path: `${role}/addCategory`,
+          icon: AddIcon,
         }
       );
 

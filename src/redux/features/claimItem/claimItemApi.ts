@@ -19,7 +19,20 @@ const claimItemApi = baseApi.injectEndpoints({
       }),
       providesTags: ["claimItem"],
     }),
+
+    updateStatus: builder.mutation({
+      query: (data) => ({
+        url: `/claims/${data.id}`,
+        method: "PATCH",
+        body: data?.body,
+      }),
+      invalidatesTags: ["claimItem"],
+    }),
   }),
 });
 
-export const { useClaimItemMutation, useGetClaimItemQuery } = claimItemApi;
+export const {
+  useClaimItemMutation,
+  useGetClaimItemQuery,
+  useUpdateStatusMutation,
+} = claimItemApi;

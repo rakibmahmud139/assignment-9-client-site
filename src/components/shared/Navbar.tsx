@@ -13,6 +13,7 @@ import Link from "next/link";
 import * as React from "react";
 import logo from "../../assets/lost--found-high-resolution-logo-transparent.png";
 import MenuItems from "./MenuItem";
+import { TDecodedUser } from "@/types";
 
 function Navbar() {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
@@ -25,8 +26,14 @@ function Navbar() {
   const [userRole, setUserRole] = React.useState("");
 
   React.useEffect(() => {
-    const user = getUser() as any;
-    setUserRole(user?.role);
+    const userInfo = async () => {
+      const user = (await getUser()) as TDecodedUser | undefined;
+      if (user && user.role) {
+        setUserRole(user.role);
+      }
+    };
+
+    userInfo();
   }, []);
 
   const handleCloseNavMenu = () => {
@@ -89,7 +96,10 @@ function Navbar() {
                 display: { xs: "block", md: "none" },
               }}
             >
-              <MenuItems handleCloseNavMenu={handleCloseNavMenu} />
+              <MenuItems
+                handleCloseNavMenu={handleCloseNavMenu}
+                role={userRole}
+              />
             </Menu>
           </Box>
           <Typography
@@ -118,7 +128,7 @@ function Navbar() {
               },
             }}
           >
-            <MenuItems />
+            <MenuItems role={userRole} />
           </Box>
 
           {userRole && (

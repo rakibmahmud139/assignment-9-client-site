@@ -1,7 +1,7 @@
 "use client";
 
-import { useGetAllUserQuery } from "@/redux/features/user/userApi";
-import { TUser } from "@/types";
+import { useGetLostItemQuery } from "@/redux/features/lostItem/lostItemApi";
+import { TLostItem } from "@/types";
 import {
   Avatar,
   Card,
@@ -11,13 +11,13 @@ import {
   Typography,
 } from "@mui/material";
 
-const AboutCard = () => {
-  const { data: users } = useGetAllUserQuery({});
+const AllLostItemCard = () => {
+  const { data: lostItems } = useGetLostItemQuery({});
 
   return (
-    <Grid container spacing={4}>
-      {users?.data.map((user: TUser) => (
-        <Grid item md={4} xs={12} gap={1} key={user.id}>
+    <Grid container>
+      {lostItems?.data.map((lostItem: TLostItem) => (
+        <Grid item md={4} gap={1} key={lostItem.id}>
           <Card sx={{ maxWidth: 345, borderRadius: "48px", color: "#bbdefb" }}>
             <CardActionArea
               sx={{
@@ -25,16 +25,19 @@ const AboutCard = () => {
               }}
             >
               <Avatar
-                alt={user?.name}
-                src={user?.userProfile?.photoUrl}
+                alt={lostItem?.lostItemName}
+                src={lostItem?.photo as string}
                 sx={{ width: 120, height: 120, my: "32px", mx: "auto" }}
               />
               <CardContent>
                 <Typography gutterBottom variant="h5" component="div">
-                  {user?.name}
+                  {lostItem?.lostItemName}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                  {user?.email}
+                  Location: {lostItem?.location}
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  Date: {lostItem?.date?.substring(0, 10)}
                 </Typography>
               </CardContent>
             </CardActionArea>
@@ -45,4 +48,4 @@ const AboutCard = () => {
   );
 };
 
-export default AboutCard;
+export default AllLostItemCard;
