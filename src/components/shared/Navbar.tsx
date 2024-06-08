@@ -1,6 +1,6 @@
 "use client";
 
-import { getUser } from "@/services/actions/getUser";
+import { useGetMyProfileQuery } from "@/redux/features/auth/authApi";
 import MenuIcon from "@mui/icons-material/Menu";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
@@ -13,9 +13,6 @@ import Link from "next/link";
 import * as React from "react";
 import logo from "../../assets/lost--found-high-resolution-logo-transparent.png";
 import MenuItems from "./MenuItem";
-import { DecodedUser, TDecodedUser, authKey } from "@/types";
-import { getFromLocalStorage } from "@/utils/localStorage";
-import { jwtDecode } from "jwt-decode";
 
 function Navbar() {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
@@ -25,21 +22,7 @@ function Navbar() {
     setAnchorElNav(event.currentTarget);
   };
 
-  const user = getFromLocalStorage(authKey);
-  const [userRole, setUserRole] = React.useState("");
-
-  React.useEffect(() => {
-    if (!userRole) {
-      const userInfo = () => {
-        const user = getUser() as TDecodedUser | undefined;
-        if (user && user.role) {
-          setUserRole(user.role);
-        }
-      };
-
-      userInfo();
-    }
-  }, [userRole]);
+  const { data: user } = useGetMyProfileQuery({});
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
@@ -101,7 +84,7 @@ function Navbar() {
                 display: { xs: "block", md: "none" },
               }}
             >
-              <MenuItems handleCloseNavMenu={handleCloseNavMenu} role={user} />
+              <MenuItems handleCloseNavMenu={handleCloseNavMenu} user={user} />
             </Menu>
           </Box>
           <Typography
@@ -130,12 +113,12 @@ function Navbar() {
               },
             }}
           >
-            <MenuItems role={user} />
+            <MenuItems user={user} />
           </Box>
 
-          {user && (
+          {user?.data?.user?.role && (
             <Box sx={{ flexGrow: 0 }}>
-              <Link href={`/dashboard/${userRole}`}>
+              <Link href={`/dashboard/${user?.data?.user?.role}`}>
                 <Typography>My Profile</Typography>
               </Link>
             </Box>

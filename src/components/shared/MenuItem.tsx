@@ -1,7 +1,6 @@
 "use client";
 
-import { authKey } from "@/types";
-import { getFromLocalStorage } from "@/utils/localStorage";
+import { TUser } from "@/types";
 import { Box, Typography } from "@mui/material";
 import MenuItem from "@mui/material/MenuItem";
 import Link from "next/link";
@@ -9,10 +8,10 @@ import { MouseEventHandler } from "react";
 
 type TProps = {
   handleCloseNavMenu?: MouseEventHandler<HTMLLIElement>;
-  role?: string | null;
+  user: TUser;
 };
 
-const MenuItems = ({ handleCloseNavMenu, role }: TProps) => {
+const MenuItems = ({ handleCloseNavMenu, user }: TProps) => {
   return (
     <Box>
       <MenuItem
@@ -30,7 +29,7 @@ const MenuItems = ({ handleCloseNavMenu, role }: TProps) => {
           },
         }}
       >
-        {role ? (
+        {user ? (
           <Link href={"/about"}>
             <Typography textAlign="center">About Us</Typography>
           </Link>
