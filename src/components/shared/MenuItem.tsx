@@ -1,6 +1,5 @@
 "use client";
 
-import { TUser } from "@/types";
 import { Box, Typography } from "@mui/material";
 import MenuItem from "@mui/material/MenuItem";
 import Link from "next/link";
@@ -8,10 +7,10 @@ import { MouseEventHandler } from "react";
 
 type TProps = {
   handleCloseNavMenu?: MouseEventHandler<HTMLLIElement>;
-  user: TUser;
+  token: string | null;
 };
 
-const MenuItems = ({ handleCloseNavMenu, user }: TProps) => {
+const MenuItems = ({ handleCloseNavMenu, token }: TProps) => {
   return (
     <Box>
       <MenuItem
@@ -29,7 +28,7 @@ const MenuItems = ({ handleCloseNavMenu, user }: TProps) => {
           },
         }}
       >
-        {user ? (
+        {token ? (
           <Link href={"/about"}>
             <Typography textAlign="center">About Us</Typography>
           </Link>

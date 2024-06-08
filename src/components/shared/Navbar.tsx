@@ -1,6 +1,7 @@
 "use client";
 
-import { useGetMyProfileQuery } from "@/redux/features/auth/authApi";
+import { TDecodedUser, authKey } from "@/types";
+import { getFromLocalStorage } from "@/utils/localStorage";
 import MenuIcon from "@mui/icons-material/Menu";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
@@ -8,6 +9,7 @@ import IconButton from "@mui/material/IconButton";
 import Menu from "@mui/material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
+import { jwtDecode } from "jwt-decode";
 import Image from "next/image";
 import Link from "next/link";
 import * as React from "react";
@@ -15,6 +17,7 @@ import logo from "../../assets/lost--found-high-resolution-logo-transparent.png"
 import MenuItems from "./MenuItem";
 
 function Navbar() {
+  const [role, setRole] = React.useState("");
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
     null
   );
@@ -22,7 +25,14 @@ function Navbar() {
     setAnchorElNav(event.currentTarget);
   };
 
-  const { data: user } = useGetMyProfileQuery({});
+  const token = getFromLocalStorage(authKey);
+
+  React.useEffect(() => {
+    if (token) {
+      const user: TDecodedUser = jwtDecode(token);
+      setRole(user.role);
+    }
+  }, [token]);
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
@@ -84,7 +94,10 @@ function Navbar() {
                 display: { xs: "block", md: "none" },
               }}
             >
-              <MenuItems handleCloseNavMenu={handleCloseNavMenu} user={user} />
+              <MenuItems
+                handleCloseNavMenu={handleCloseNavMenu}
+                token={token}
+              />
             </Menu>
           </Box>
           <Typography
@@ -113,12 +126,12 @@ function Navbar() {
               },
             }}
           >
-            <MenuItems user={user} />
+            <MenuItems token={token} />
           </Box>
 
-          {user?.data?.user?.role && (
+          {token && (
             <Box sx={{ flexGrow: 0 }}>
-              <Link href={`/dashboard/${user?.data?.user?.role}`}>
+              <Link href={`/dashboard/${role}`}>
                 <Typography>My Profile</Typography>
               </Link>
             </Box>
