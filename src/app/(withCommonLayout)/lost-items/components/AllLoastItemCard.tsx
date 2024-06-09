@@ -15,7 +15,7 @@ const AllLostItemCard = () => {
   const { data: lostItems } = useGetLostItemQuery({});
 
   return (
-    <Grid container>
+    <Grid container spacing={6}>
       {lostItems?.data.map((lostItem: TLostItem) => (
         <Grid item md={4} gap={1} key={lostItem.id}>
           <Card sx={{ maxWidth: 345, borderRadius: "48px", color: "#bbdefb" }}>

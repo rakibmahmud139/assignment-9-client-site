@@ -27,7 +27,7 @@ const FoundItemsCard = () => {
         <Grid container spacing={4}>
           {foundItems?.data?.map((item: TFoundItem) => (
             <Grid key={item.id} item md={4} xs={12}>
-              <Card sx={{ maxWidth: 600, maxHeight: 380 }}>
+              <Card sx={{ maxWidth: 600 }}>
                 <CardActionArea>
                   <Image
                     src={item?.photo}
