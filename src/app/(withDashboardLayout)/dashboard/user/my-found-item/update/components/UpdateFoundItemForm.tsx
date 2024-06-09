@@ -62,7 +62,7 @@ const UpdateFoundItemForm = ({ itemId }: { itemId: string }) => {
 
       if (res?.success) {
         toast.success(res?.message);
-        router.push("user/my-found-item");
+        router.push("/dashboard/user/my-found-item");
       }
     }
   };
