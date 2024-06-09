@@ -35,6 +35,9 @@ const Testimonials = () => {
                     <Image
                       src={review?.user?.userProfile?.photoUrl}
                       alt="user image"
+                      width={345}
+                      height={200}
+                      style={{ height: 200 }}
                     />
                   ) : (
                     <AccountCircleIcon
