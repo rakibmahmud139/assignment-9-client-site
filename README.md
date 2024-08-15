@@ -31,4 +31,4 @@ password: 123456
 2. mui/materialUI
 3. daisyUI
 4. npm
-   5 git etc
+5. git etc

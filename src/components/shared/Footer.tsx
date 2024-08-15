@@ -1,49 +1,34 @@
-import { Box, Stack, Typography } from "@mui/material";
-import FacebookIcon from "@mui/icons-material/Facebook";
-import YouTubeIcon from "@mui/icons-material/YouTube";
-import XIcon from "@mui/icons-material/X";
-import logo from "../../assets/lost--found-high-resolution-logo-transparent.png";
 import Image from "next/image";
+import logo from "../../assets/lost--found-high-resolution-logo-transparent.png";
 const Footer = () => {
   return (
-    <footer className="footer p-10 bg-neutral text-neutral-content">
+    <footer className="footer bg-base-200 text-base-content p-10">
       <aside>
         <Image src={logo} alt="logo" width={100} height={100} />
-        <Typography textAlign="center" color="whitesmoke">
-          Email: lost@found.com
-        </Typography>
-        <Typography textAlign="center" color="whitesmoke">
-          © 2024 Lost & Found, Inc. All rights reserved.
-        </Typography>
-        <Typography textAlign="center" color="whitesmoke">
-          Terms of Use, Privacy Policy
-        </Typography>
+        <p>
+          Lost & Found Items.
+          <br />
+          Providing reliable tech since 2024
+        </p>
       </aside>
       <nav>
-        <h6 className="footer-title">Social</h6>
-        <div className="grid grid-flow-col gap-4">
-          <a href="https://www.facebook.com/">
-            <FacebookIcon
-              sx={{
-                fontSize: "40px",
-              }}
-            />
-          </a>
-          <a href="https://x.com/home">
-            <XIcon
-              sx={{
-                fontSize: "40px",
-              }}
-            />
-          </a>
-          <a href="https://youtube.com/">
-            <YouTubeIcon
-              sx={{
-                fontSize: "40px",
-              }}
-            />
-          </a>
-        </div>
+        <h6 className="footer-title">Services</h6>
+        <a className="link link-hover">Found Item</a>
+        <a className="link link-hover">Lost Item</a>
+        <a className="link link-hover">Claim Item</a>
+      </nav>
+      <nav>
+        <h6 className="footer-title">Company</h6>
+        <a className="link link-hover">About us</a>
+        <a className="link link-hover">Contact</a>
+        <a className="link link-hover">Lost Item</a>
+        <a className="link link-hover">Found Item</a>
+      </nav>
+      <nav>
+        <h6 className="footer-title">Legal</h6>
+        <a className="link link-hover">Terms of use</a>
+        <a className="link link-hover">Privacy policy</a>
+        <a className="link link-hover">Cookie policy</a>
       </nav>
     </footer>
   );

@@ -14,6 +14,32 @@ import { useRouter } from "next/navigation";
 const LoginForm = () => {
   const router = useRouter();
 
+  //!User login
+  const handleUserLogin = async () => {
+    const data = { email: "user@ph.com", password: "123456" };
+
+    const res = await loginUser(data);
+
+    if (res?.data?.id && res?.data?.token) {
+      toast.success(res?.message);
+      setToLocalStorage(authKey, res?.data?.token);
+      router.push("/");
+    }
+  };
+
+  //!Admin Login
+  const handleAdminLogin = async () => {
+    const data = { email: "admin@gmail.com", password: "123456" };
+
+    const res = await loginUser(data);
+
+    if (res?.data?.id && res?.data?.token) {
+      toast.success(res?.message);
+      setToLocalStorage(authKey, res?.data?.token);
+      router.push("/");
+    }
+  };
+
   const handleLogin = async (data: FieldValues) => {
     const res = await loginUser(data);
 
@@ -68,6 +94,23 @@ const LoginForm = () => {
         }}
       >
         Login
+      </Button>
+      <Button
+        onClick={() => handleUserLogin()}
+        sx={{
+          mt: "28px",
+          mx: "4px",
+        }}
+      >
+        User
+      </Button>
+      <Button
+        onClick={() => handleAdminLogin()}
+        sx={{
+          mt: "28px",
+        }}
+      >
+        Admin
       </Button>
     </FLForms>
   );

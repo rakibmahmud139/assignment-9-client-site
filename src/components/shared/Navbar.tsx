@@ -42,9 +42,9 @@ function Navbar() {
     <Box
       position="static"
       sx={{
-        background: "#f4f7fe",
+        background: "rgb(187, 132, 147)",
+        borderRadius: "12px",
       }}
-      borderBottom={1}
     >
       <Container maxWidth="xl">
         <Toolbar disableGutters>
@@ -92,6 +92,7 @@ function Navbar() {
               onClose={handleCloseNavMenu}
               sx={{
                 display: { xs: "block", md: "none" },
+                color: "#fff",
               }}
             >
               <MenuItems
@@ -119,6 +120,7 @@ function Navbar() {
           <Box
             sx={{
               flexGrow: 1,
+              color: "#fff",
               display: {
                 xs: "none",
                 md: "flex",
@@ -132,7 +134,7 @@ function Navbar() {
           {token && (
             <Box sx={{ flexGrow: 0 }}>
               <Link href={`/dashboard/${role}`}>
-                <Typography>My Profile</Typography>
+                <Typography color="#fff">My Profile</Typography>
               </Link>
             </Box>
           )}

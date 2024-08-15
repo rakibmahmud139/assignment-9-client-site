@@ -1,5 +1,5 @@
 import Heading from "@/components/shared/Heading";
-import { Box } from "@mui/material";
+import { Box, Container } from "@mui/material";
 import LostItemCard from "./LostItemCard";
 
 const ResentLostItem = () => {
@@ -7,9 +7,9 @@ const ResentLostItem = () => {
     <Box mt={16}>
       <Box mb={8}>
         <Heading title="Recent LostItem" />
-        <Box mt={8}>
+        <Container>
           <LostItemCard />
-        </Box>
+        </Container>
       </Box>
     </Box>
   );

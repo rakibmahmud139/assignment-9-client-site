@@ -15,13 +15,11 @@ export default function CommonLayout({
   return (
     <Box
       sx={{
-        backgroundColor: "#f4f7fe",
+        backgroundColor: "rgb(203, 228, 222)",
       }}
     >
-      <Container>
-        <Navbar />
-        <Box my={2}>{children}</Box>
-      </Container>
+      <Navbar />
+      <Box>{children}</Box>
       <Footer />
     </Box>
   );

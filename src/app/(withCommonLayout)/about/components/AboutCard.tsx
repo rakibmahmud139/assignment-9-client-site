@@ -30,7 +30,12 @@ const AboutCard = () => {
                 sx={{ width: 120, height: 120, my: "32px", mx: "auto" }}
               />
               <CardContent>
-                <Typography gutterBottom variant="h5" component="div">
+                <Typography
+                  gutterBottom
+                  variant="h5"
+                  component="div"
+                  color="#F97300"
+                >
                   {user?.name}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">

@@ -10,6 +10,8 @@ import {
   Grid,
   Typography,
 } from "@mui/material";
+import PlaceIcon from "@mui/icons-material/Place";
+import DateRangeIcon from "@mui/icons-material/DateRange";
 
 const AllLostItemCard = () => {
   const { data: lostItems } = useGetLostItemQuery({});
@@ -30,14 +32,19 @@ const AllLostItemCard = () => {
                 sx={{ width: 120, height: 120, my: "32px", mx: "auto" }}
               />
               <CardContent>
-                <Typography gutterBottom variant="h5" component="div">
+                <Typography
+                  gutterBottom
+                  variant="h5"
+                  color="#F97300"
+                  component="div"
+                >
                   {lostItem?.lostItemName}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                  Location: {lostItem?.location}
+                  <PlaceIcon /> {lostItem?.location}
                 </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  Date: {lostItem?.date?.substring(0, 10)}
+                <Typography variant="body2" mt={2} color="text.secondary">
+                  <DateRangeIcon /> {lostItem?.date?.substring(0, 10)}
                 </Typography>
               </CardContent>
             </CardActionArea>

@@ -1,14 +1,14 @@
 import Heading from "@/components/shared/Heading";
-import { Box } from "@mui/material";
+import { Box, Container } from "@mui/material";
 import AllLostItemCard from "./components/AllLoastItemCard";
 
 const AllLostItemPage = () => {
   return (
-    <Box mb={16}>
+    <Box mb={16} mt={8}>
       <Heading title="All Lost Items" />
-      <Box>
+      <Container>
         <AllLostItemCard />
-      </Box>
+      </Container>
     </Box>
   );
 };

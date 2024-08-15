@@ -20,19 +20,9 @@ const SubmitLostItemPage = () => {
             md: "36px",
             xs: "20px",
           }}
-          color="#00bcd4"
+          color="#F97300"
         >
-          Submit You Found Items
-        </Typography>
-        <Typography
-          width={{
-            xs: 200,
-          }}
-          mx={{
-            xs: "auto",
-          }}
-        >
-          Easily submit found items using this form
+          Submit Your Found Items
         </Typography>
       </Box>
       <Box>

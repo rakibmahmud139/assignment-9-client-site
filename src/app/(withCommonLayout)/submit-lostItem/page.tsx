@@ -3,7 +3,7 @@ import SubmitLostItemForm from "./components/SubmitLostItemForm";
 
 const SubmitLostItemPage = () => {
   return (
-    <Box>
+    <Box mb={8}>
       <Box
         borderBottom={1}
         textAlign="center"
@@ -20,17 +20,9 @@ const SubmitLostItemPage = () => {
             md: "36px",
             xs: "20px",
           }}
-          color="#00bcd4"
+          color="#F97300"
         >
           Submit Your Lost Product
-        </Typography>
-        <Typography
-          width={{
-            xs: 200,
-          }}
-          mx="auto"
-        >
-          Easily report your lost items using this form
         </Typography>
       </Box>
       <Box>

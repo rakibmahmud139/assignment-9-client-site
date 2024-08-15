@@ -16,6 +16,8 @@ import {
 } from "@mui/material";
 import Image from "next/image";
 import { useState } from "react";
+import PlaceIcon from "@mui/icons-material/Place";
+
 const FoundItemsCard = () => {
   const [isOpenModal, setIsOpenModal] = useState<boolean>(false);
 
@@ -41,7 +43,7 @@ const FoundItemsCard = () => {
                       {item?.foundItemName}
                     </Typography>
                     <Typography variant="body2" color="text.secondary">
-                      Location: {item?.location}
+                      <PlaceIcon /> {item?.location}
                     </Typography>
                     <Typography variant="body2" color="text.secondary">
                       Description: {item?.description}

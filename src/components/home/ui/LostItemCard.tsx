@@ -9,6 +9,7 @@ import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import Image from "next/image";
 import Link from "next/link";
+import PlaceIcon from "@mui/icons-material/Place";
 
 const LostItemCard = () => {
   const { data: lostItems, isLoading } = useGetLostItemQuery({});
@@ -33,7 +34,9 @@ const LostItemCard = () => {
                   <Typography gutterBottom variant="h5" component="div">
                     {lostItem?.lostItemName}
                   </Typography>
-                  <Typography>Location: {lostItem?.location}</Typography>
+                  <Typography>
+                    <PlaceIcon /> {lostItem?.location}
+                  </Typography>
                   <Typography variant="body2" color="text.secondary">
                     Description: {lostItem?.description}
                   </Typography>
