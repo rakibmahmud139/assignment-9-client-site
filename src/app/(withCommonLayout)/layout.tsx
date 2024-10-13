@@ -13,12 +13,7 @@ export default function CommonLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <Box
-      sx={{
-        backgroundColor: "rgb(203, 228, 222)",
-      }}
-    >
-      <Navbar />
+    <Box>
       <Box>{children}</Box>
       <Footer />
     </Box>

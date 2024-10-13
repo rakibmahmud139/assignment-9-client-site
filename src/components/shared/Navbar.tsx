@@ -39,13 +39,7 @@ function Navbar() {
   };
 
   return (
-    <Box
-      position="static"
-      sx={{
-        background: "rgb(187, 132, 147)",
-        borderRadius: "12px",
-      }}
-    >
+    <Box position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Link href={"/"}>

@@ -1,44 +1,8 @@
-import { Typography } from "@mui/material";
-
 const Heading = ({ title }: { title: string }) => {
   return (
-    <Typography
-      textAlign="center"
-      component="h1"
-      fontSize={{
-        md: "36px",
-        xs: "24px",
-      }}
-      borderBottom={1}
-      width={{
-        md: 420,
-        xs: 332,
-      }}
-      mx="auto"
-      mb={8}
-    >
-      <Typography
-        component="span"
-        color="gold"
-        fontSize={{
-          md: "36px",
-          xs: "24px",
-        }}
-      >
-        ***
-      </Typography>
+    <h1 className="text-[32px] md:text-5xl leading-tight font-bold text-[#239FA4] text-center mb-12">
       {title}
-      <Typography
-        component="span"
-        color="gold"
-        fontSize={{
-          md: "36px",
-          xs: "24px",
-        }}
-      >
-        ***
-      </Typography>
-    </Typography>
+    </h1>
   );
 };
 

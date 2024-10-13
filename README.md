@@ -32,3 +32,5 @@ password: 123456
 3. daisyUI
 4. npm
 5. git etc
+
+
