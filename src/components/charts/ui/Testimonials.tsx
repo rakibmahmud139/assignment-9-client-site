@@ -22,7 +22,7 @@ const Testimonials = () => {
   const { data: reviews, isLoading } = useGetReviewQuery({});
 
   return (
-    <Box my={16}>
+    <Box my={8}>
       <Heading title="Testimonials" />
       {!isLoading && (
         <Swiper
@@ -35,10 +35,10 @@ const Testimonials = () => {
             <SwiperSlide key={index}>
               <Card
                 sx={{
-                  maxWidth: 800,
+                  maxWidth: 900,
                   margin: "auto",
                   padding: 4,
-                  background: "linear-gradient(90deg, #FF6584, #FF8C00)",
+                  background: "#e3f1f1",
                   borderRadius: "20px",
                   color: "#fff",
                   minHeight: 300,
@@ -52,20 +52,26 @@ const Testimonials = () => {
                       marginBottom: 2,
                     }}
                   >
-                    <Avatar
-                      src={review?.user?.userProfile?.photoUrl}
-                      sx={{
-                        width: 80,
-                        height: 80,
-                        marginRight: 3,
-                        border: "3px solid #fff",
-                      }}
-                    />
+                    <Box sx={{ display: "flex", justifyContent: "center" }}>
+                      <Avatar
+                        src={review?.user?.userProfile?.photoUrl}
+                        sx={{
+                          width: 80,
+                          height: 80,
+                          marginRight: 3,
+                          border: "3px solid #fff",
+                        }}
+                      />
+                    </Box>
                     <Box>
-                      <Typography variant="h6" sx={{ fontWeight: "bold" }}>
+                      <Typography
+                        variant="body1"
+                        textAlign={"center"}
+                        sx={{ fontWeight: "bold", fontSize: "20px" }}
+                      >
                         {review?.user?.name}
                       </Typography>
-                      <Typography variant="body2" sx={{ color: "#ddd" }}>
+                      <Typography variant="body1">
                         {review?.user?.role}
                       </Typography>
                     </Box>

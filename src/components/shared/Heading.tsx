@@ -1,6 +1,6 @@
 const Heading = ({ title }: { title: string }) => {
   return (
-    <h1 className="text-[32px] md:text-5xl leading-tight font-bold text-[#239FA4] text-center mb-12">
+    <h1 className="text-[36px] md:text-[40px] leading-tight font-bold text-[#32c2c7] text-center mb-12">
       {title}
     </h1>
   );

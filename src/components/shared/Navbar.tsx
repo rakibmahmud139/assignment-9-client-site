@@ -128,7 +128,7 @@ function Navbar() {
           {token && (
             <Box sx={{ flexGrow: 0 }}>
               <Link href={`/dashboard/${role}`}>
-                <Typography color="#fff">My Profile</Typography>
+                <Typography color="black">My Profile</Typography>
               </Link>
             </Box>
           )}

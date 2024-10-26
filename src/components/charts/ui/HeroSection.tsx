@@ -67,7 +67,6 @@ const HeroHeaderShape2 = () => (
 const HeroSection = () => {
   return (
     <div className="ezy__header12 light bg-blue-600 text-white relative z-10">
-      <Navbar />
       <HeroHeaderShape1 />
       <HeroHeaderShape2 />
 
@@ -76,10 +75,10 @@ const HeroSection = () => {
           <div className="grid grid-cols-12 gap-6">
             <div className="col-span-12 lg:col-span-6 pe-xl-5 text-center lg:text-start">
               <div className="flex flex-col justify-center h-[220px] px-5">
-                <h2 className="text-3xl pt-24 md:pt-64 font-bold md:text-[70px] leading-none mb-6">
+                <h2 className="text-3xl pt-24 md:pt-64 font-bold md:text-[56px] leading-none mb-6">
                   Found Something?
                 </h2>
-                <p className="text-[22px] leading-normal opacity-80">
+                <p className="text-[22px] leading-normal">
                   Help Others Reclaim Their Lost Items!
                 </p>
                 <div>

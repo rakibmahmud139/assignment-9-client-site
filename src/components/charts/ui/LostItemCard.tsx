@@ -17,9 +17,9 @@ const LostItemCard = () => {
   return (
     <Box>
       {!isLoading && (
-        <Grid container spacing={2}>
-          {lostItems?.data?.slice(0, 6).map((lostItem: TLostItem) => (
-            <Grid key={lostItem?.id} item md={4}>
+        <Grid container spacing={4}>
+          {lostItems?.data?.slice(0, 4).map((lostItem: TLostItem) => (
+            <Grid key={lostItem?.id} item md={3} sm={6} xs={12}>
               <Card sx={{ maxWidth: 345 }}>
                 <Box>
                   <Image
@@ -41,9 +41,9 @@ const LostItemCard = () => {
                     Description: {lostItem?.description}
                   </Typography>
                 </CardContent>
-                <CardActions>
+                <CardActions sx={{ justifyContent: "center" }}>
                   <Link href={"/lost-items"}>
-                    <Button>All Lost Item</Button>
+                    <Button sx={{ bgcolor: "#32c2c7" }}>View Details</Button>
                   </Link>
                 </CardActions>
               </Card>

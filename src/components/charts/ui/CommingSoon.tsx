@@ -59,7 +59,7 @@ const CommingSoon = () => {
   };
 
   return (
-    <div className="py-14 md:py-24 bg-white dark:bg-[#0b1727] text-zinc-900 dark:text-white relative overflow-hidden z-10">
+    <div className="pt-14 md:pt-24 bg-white dark:bg-[#0b1727] text-zinc-900 dark:text-white relative overflow-hidden z-10">
       <div className="absolute top-0 right-0">
         <img
           src="https://cdn.easyfrontend.com/pictures/ecommerce/grid_10_shape1.png"

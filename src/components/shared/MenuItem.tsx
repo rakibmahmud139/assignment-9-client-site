@@ -29,20 +29,32 @@ const MenuItems = ({ handleCloseNavMenu, token }: TProps) => {
         }}
       >
         {token ? (
-          <Link href={"/about"}>
-            <Typography color="#fff" textAlign="center">
-              About Us
-            </Typography>
-          </Link>
-        ) : (
           <>
             <Link href={"/about"}>
-              <Typography color="#fff" textAlign="center">
+              <Typography color="black" textAlign="center">
                 About Us
               </Typography>
             </Link>
+            <Link href={"/lost-items"}>
+              <Typography color="black" textAlign="center">
+                All Lost Item
+              </Typography>
+            </Link>
+          </>
+        ) : (
+          <>
+            <Link href={"/about"}>
+              <Typography color="black" textAlign="center">
+                About Us
+              </Typography>
+            </Link>
+            <Link href={"/lost-items"}>
+              <Typography color="black" textAlign="center">
+                All Lost Item
+              </Typography>
+            </Link>
             <Link href={"/login"}>
-              <Typography color="#fff" textAlign="center">
+              <Typography color="black" textAlign="center">
                 Login
               </Typography>
             </Link>

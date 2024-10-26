@@ -1,9 +1,9 @@
-import AboutUs from "@/components/home/ui/AboutUs";
-import CommingSoon from "@/components/home/ui/CommingSoon";
-import ContactUs from "@/components/home/ui/ContactUs";
-import HeroSection from "@/components/home/ui/HeroSection";
-import ResentLostItem from "@/components/home/ui/ResentLostItem";
-import Testimonials from "@/components/home/ui/Testimonials";
+import AboutUs from "@/components/charts/ui/AboutUs";
+import CommingSoon from "@/components/charts/ui/CommingSoon";
+import ContactUs from "@/components/charts/ui/ContactUs";
+import HeroSection from "@/components/charts/ui/HeroSection";
+import ResentLostItem from "@/components/charts/ui/ResentLostItem";
+import Testimonials from "@/components/charts/ui/Testimonials";
 import { Box } from "@mui/material";
 
 export default function Home() {

@@ -126,7 +126,11 @@ const FoundItemForm = () => {
             display="flex"
             justifyContent="space-between"
           >
-            <Button type="submit" disabled={submitting}>
+            <Button
+              type="submit"
+              sx={{ bgcolor: "#32c2c7" }}
+              disabled={submitting}
+            >
               Submit Found Item
             </Button>
 

@@ -14,6 +14,7 @@ export default function CommonLayout({
 }>) {
   return (
     <Box>
+      <Navbar />
       <Box>{children}</Box>
       <Footer />
     </Box>

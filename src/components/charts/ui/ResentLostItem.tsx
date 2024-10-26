@@ -4,12 +4,11 @@ import LostItemCard from "./LostItemCard";
 
 const ResentLostItem = () => {
   return (
-    <Box mt={16}>
+    <Box mt={8} mx={12}>
       <Box mb={8}>
-        <Heading title="Recent LostItem" />
-        <Container>
-          <LostItemCard />
-        </Container>
+        <Heading title="Recent Lost Item" />
+
+        <LostItemCard />
       </Box>
     </Box>
   );
