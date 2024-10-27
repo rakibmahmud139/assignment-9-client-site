@@ -15,10 +15,11 @@ import { toast } from "sonner";
 type TProps = {
   open: boolean;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  foundItemId: string;
+  foundItemId?: string;
+  lostItemId?: string;
 };
 
-const ClaimModal = ({ open, setOpen, foundItemId }: TProps) => {
+const ClaimModal = ({ open, setOpen, foundItemId, lostItemId }: TProps) => {
   const [claimItem, { isLoading }] = useClaimItemMutation();
 
   const handleClaim = async (data: FieldValues) => {
@@ -26,6 +27,7 @@ const ClaimModal = ({ open, setOpen, foundItemId }: TProps) => {
 
     const resData = {
       foundItemId,
+      lostItemId,
       distinguishingFeatures: data?.distinguishingFeatures,
       thirdPartyConfirmation: data?.thirdPartyConfirmation,
       photo,

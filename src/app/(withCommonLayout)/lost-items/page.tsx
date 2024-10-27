@@ -4,9 +4,9 @@ import AllLostItemCard from "./components/AllLoastItemCard";
 
 const AllLostItemPage = () => {
   return (
-    <Box mb={16} mt={8}>
+    <Box mb={16} mt={3}>
       <Heading title="All Lost Items" />
-      <Container>
+      <Container maxWidth="xl" sx={{ mx: 8 }}>
         <AllLostItemCard />
       </Container>
     </Box>

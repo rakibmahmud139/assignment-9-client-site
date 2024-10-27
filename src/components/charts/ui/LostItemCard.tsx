@@ -37,12 +37,12 @@ const LostItemCard = () => {
                   <Typography>
                     <PlaceIcon /> {lostItem?.location}
                   </Typography>
-                  <Typography variant="body2" color="text.secondary">
+                  <Typography variant="body2" mt={1} color="text.secondary">
                     Description: {lostItem?.description}
                   </Typography>
                 </CardContent>
                 <CardActions sx={{ justifyContent: "center" }}>
-                  <Link href={"/lost-items"}>
+                  <Link href={`/lost-items/${lostItem?.id}`}>
                     <Button sx={{ bgcolor: "#32c2c7" }}>View Details</Button>
                   </Link>
                 </CardActions>

@@ -2,52 +2,52 @@
 
 import { useGetLostItemQuery } from "@/redux/features/lostItem/lostItemApi";
 import { TLostItem } from "@/types";
+import PlaceIcon from "@mui/icons-material/Place";
 import {
-  Avatar,
+  Box,
+  Button,
   Card,
-  CardActionArea,
+  CardActions,
   CardContent,
   Grid,
   Typography,
 } from "@mui/material";
-import PlaceIcon from "@mui/icons-material/Place";
-import DateRangeIcon from "@mui/icons-material/DateRange";
+import Image from "next/image";
+import Link from "next/link";
 
 const AllLostItemCard = () => {
   const { data: lostItems } = useGetLostItemQuery({});
 
   return (
-    <Grid container spacing={6}>
-      {lostItems?.data.map((lostItem: TLostItem) => (
-        <Grid item md={4} gap={1} key={lostItem.id}>
-          <Card sx={{ maxWidth: 345, borderRadius: "48px", color: "#bbdefb" }}>
-            <CardActionArea
-              sx={{
-                textAlign: "center",
-              }}
-            >
-              <Avatar
-                alt={lostItem?.lostItemName}
-                src={lostItem?.photo as string}
-                sx={{ width: 120, height: 120, my: "32px", mx: "auto" }}
+    <Grid container spacing={4}>
+      {lostItems?.data?.map((lostItem: TLostItem) => (
+        <Grid key={lostItem?.id} item md={3} sm={6} xs={12}>
+          <Card sx={{ maxWidth: 345 }}>
+            <Box>
+              <Image
+                src={lostItem?.photo}
+                width={500}
+                height={60}
+                alt="product image"
+                style={{ height: 200 }}
               />
-              <CardContent>
-                <Typography
-                  gutterBottom
-                  variant="h5"
-                  color="#F97300"
-                  component="div"
-                >
-                  {lostItem?.lostItemName}
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  <PlaceIcon /> {lostItem?.location}
-                </Typography>
-                <Typography variant="body2" mt={2} color="text.secondary">
-                  <DateRangeIcon /> {lostItem?.date?.substring(0, 10)}
-                </Typography>
-              </CardContent>
-            </CardActionArea>
+            </Box>
+            <CardContent>
+              <Typography gutterBottom variant="h5" component="div">
+                {lostItem?.lostItemName}
+              </Typography>
+              <Typography>
+                <PlaceIcon /> {lostItem?.location}
+              </Typography>
+              <Typography variant="body2" mt={1} color="text.secondary">
+                Description: {lostItem?.description}
+              </Typography>
+            </CardContent>
+            <CardActions sx={{ justifyContent: "center" }}>
+              <Link href={`/lost-items/${lostItem?.id}`}>
+                <Button sx={{ bgcolor: "#32c2c7" }}>View Details</Button>
+              </Link>
+            </CardActions>
           </Card>
         </Grid>
       ))}
