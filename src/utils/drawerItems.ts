@@ -13,20 +13,17 @@ import AddIcon from "@mui/icons-material/Add";
 export const drawerItems = (role: UserRole): DrawerItem[] => {
   const roleMenus: DrawerItem[] = [];
 
-  const defaultMenus = [
-    {
-      title: "Change Password",
-      path: `change-password`,
-      icon: KeyIcon,
-    },
-  ];
-
   switch (role) {
     case USER_ROLE.USER:
       roleMenus.push(
         {
-          title: "Profile",
+          title: "Dashboard",
           path: `${role}`,
+          icon: EqualizerIcon,
+        },
+        {
+          title: "Profile",
+          path: `${role}/my-profile`,
           icon: PersonIcon,
         },
         {
@@ -50,14 +47,14 @@ export const drawerItems = (role: UserRole): DrawerItem[] => {
     case USER_ROLE.ADMIN:
       roleMenus.push(
         {
-          title: "User Management",
-          path: `${role}/user-management`,
-          icon: PeopleIcon,
-        },
-        {
           title: "Dashboard",
           path: `${role}`,
           icon: EqualizerIcon,
+        },
+        {
+          title: "User Management",
+          path: `${role}/user-management`,
+          icon: PeopleIcon,
         },
         {
           title: "Recent Lost Items",
@@ -82,5 +79,5 @@ export const drawerItems = (role: UserRole): DrawerItem[] => {
       break;
   }
 
-  return [...roleMenus, ...defaultMenus];
+  return [...roleMenus];
 };
