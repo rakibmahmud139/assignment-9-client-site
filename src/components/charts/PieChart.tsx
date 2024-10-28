@@ -19,6 +19,7 @@ import {
   ChartTooltipContent,
 } from "@/components/ui/chart";
 import { useGetMetaDataQuery } from "@/redux/features/meta/metaApi";
+import { TMetaData } from "@/types";
 
 export const description = "A donut chart with text";
 
@@ -56,9 +57,7 @@ const chartConfig = {
   },
 } satisfies ChartConfig;
 
-export function PieChartComponent() {
-  const { data } = useGetMetaDataQuery({});
-
+export function PieChartComponent({ data }: { data: TMetaData }) {
   const totalVisitors = React.useMemo(() => {
     return chartData.reduce((acc, curr) => acc + curr.visitors, 0);
   }, []);
@@ -77,8 +76,8 @@ export function PieChartComponent() {
                 content={<ChartTooltipContent hideLabel />}
               />
               <Pie
-                data={data?.data}
-                dataKey="totalUsers"
+                data={data}
+                dataKey="totalLostItems"
                 nameKey="browser"
                 innerRadius={60}
                 strokeWidth={5}

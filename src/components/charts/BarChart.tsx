@@ -10,6 +10,7 @@ import {
   ChartTooltipContent,
 } from "@/components/ui/chart";
 import { useGetMetaDataQuery } from "@/redux/features/meta/metaApi";
+import { TMetaData } from "@/types";
 
 const chartConfig = {
   desktop: {
@@ -22,15 +23,13 @@ const chartConfig = {
   },
 } satisfies ChartConfig;
 
-export function BarChartComponent() {
-  const { data } = useGetMetaDataQuery({});
-
+export function BarChartComponent({ data }: { data: TMetaData }) {
   return (
     <div className="w-96 h-96 mt-16">
       <Card>
         <CardContent>
           <ChartContainer config={chartConfig}>
-            <BarChart accessibilityLayer data={data?.data}>
+            <BarChart accessibilityLayer data={data}>
               <CartesianGrid vertical={false} />
               <XAxis
                 dataKey="month"

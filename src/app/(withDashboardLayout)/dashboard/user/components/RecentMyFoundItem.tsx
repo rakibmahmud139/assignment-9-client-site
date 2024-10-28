@@ -4,15 +4,28 @@ import { useGetFoundItemQuery } from "@/redux/features/foundItem/foundItemApi";
 import { Box, CircularProgress } from "@mui/material";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
 
-const RecentMyFoundItem = ({ email }: { email: string }) => {
-  const { data: foundItems, isLoading } = useGetFoundItemQuery({
-    email: email,
-  });
+const RecentMyFoundItem = ({ email }: { email?: string }) => {
+  let dataInfo;
+  let loadingInfo;
 
-  console.log(foundItems);
+  if (email) {
+    const { data: foundItems, isLoading } = useGetFoundItemQuery({
+      email: email,
+    });
+
+    dataInfo = foundItems;
+    loadingInfo = isLoading;
+  } else {
+    const { data: foundItems, isLoading } = useGetFoundItemQuery({
+      email: email,
+    });
+
+    dataInfo = foundItems;
+    loadingInfo = isLoading;
+  }
 
   const rows =
-    foundItems?.data?.map((item: { user: { name: any } }) => ({
+    dataInfo?.data?.map((item: { user: { name: any } }) => ({
       ...item,
       userName: item.user?.name,
     })) ?? [];
@@ -26,7 +39,7 @@ const RecentMyFoundItem = ({ email }: { email: string }) => {
   return (
     <Box mb={36}>
       <Box sx={{ height: "100%", width: "100%" }}>
-        {isLoading ? (
+        {loadingInfo ? (
           <Box
             sx={{
               display: "flex",

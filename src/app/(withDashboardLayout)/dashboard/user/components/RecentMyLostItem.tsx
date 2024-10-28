@@ -1,23 +1,26 @@
 "use client";
 
-import {
-  useDeleteUserMutation,
-  useGetAllUserQuery,
-} from "@/redux/features/user/userApi";
-import { Box, CircularProgress, IconButton } from "@mui/material";
-import { DataGrid, GridColDef } from "@mui/x-data-grid";
-import DeleteIcon from "@mui/icons-material/Delete";
-import ModeEditOutlineIcon from "@mui/icons-material/ModeEditOutline";
-import { toast } from "sonner";
-import Link from "next/link";
 import { useGetLostItemQuery } from "@/redux/features/lostItem/lostItemApi";
+import { Box, CircularProgress } from "@mui/material";
+import { DataGrid, GridColDef } from "@mui/x-data-grid";
 
-const RecentMyLostItem = ({ email }: { email: string }) => {
-  const { data: lostItems, isLoading } = useGetLostItemQuery({
-    email: email,
-  });
+const RecentMyLostItem = ({ email }: { email?: string }) => {
+  let dataInfo;
+  let loadingInfo;
 
-  console.log(lostItems);
+  if (email) {
+    const { data: lostItems, isLoading } = useGetLostItemQuery({
+      email: email,
+    });
+
+    dataInfo = lostItems;
+    loadingInfo = isLoading;
+  } else {
+    const { data: lostItems, isLoading } = useGetLostItemQuery({});
+
+    dataInfo = lostItems;
+    loadingInfo = isLoading;
+  }
 
   const columns: GridColDef[] = [
     { field: "lostItemName", headerName: "Item Name", flex: 1 },
@@ -28,7 +31,7 @@ const RecentMyLostItem = ({ email }: { email: string }) => {
   return (
     <Box mb={36}>
       <Box sx={{ height: "100%", width: "100%" }}>
-        {isLoading ? (
+        {loadingInfo ? (
           <Box
             sx={{
               display: "flex",
@@ -42,7 +45,7 @@ const RecentMyLostItem = ({ email }: { email: string }) => {
           </Box>
         ) : (
           <DataGrid
-            rows={lostItems?.data?.slice(0, 4) ?? []}
+            rows={dataInfo?.data?.slice(0, 4) ?? []}
             columns={columns}
             hideFooterPagination={true}
             hideFooter={true}

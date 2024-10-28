@@ -83,3 +83,11 @@ export type DecodedUser = {
   iat: number;
   exp: number;
 };
+
+export type TMetaData = [
+  {
+    totalClaimItems: number;
+    totalLostItems: number;
+    totalFoundItems: number;
+  }
+];

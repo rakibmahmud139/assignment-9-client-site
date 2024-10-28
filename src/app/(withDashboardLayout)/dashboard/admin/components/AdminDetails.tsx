@@ -1,14 +1,15 @@
 "use client";
 
-import Heading from "@/components/shared/Heading";
 import { useGetMyProfileQuery } from "@/redux/features/auth/authApi";
-import EmailRoundedIcon from "@mui/icons-material/EmailRounded";
 import { Box } from "@mui/material";
 import Link from "next/link";
-import RecentMyFoundItem from "./RecentMyFoundItem";
-import RecentMyLostItem from "./RecentMyLostItem";
+import React from "react";
+import EmailRoundedIcon from "@mui/icons-material/EmailRounded";
+import Heading from "@/components/shared/Heading";
+import RecentMyLostItem from "../../user/components/RecentMyLostItem";
+import RecentMyFoundItem from "../../user/components/RecentMyFoundItem";
 
-const UserDetails = () => {
+const AdminDetails = () => {
   const { data: myProfile } = useGetMyProfileQuery({});
 
   return (
@@ -54,16 +55,16 @@ const UserDetails = () => {
       </div>
       <div className="md:flex gap-6 justify-between">
         <div className="w-[50%] h-96 mt-16">
-          <Heading title="Recent My Lost Item" />
-          <RecentMyLostItem email={myProfile?.data?.user?.email} />
+          <Heading title="Recent Lost Item" />
+          <RecentMyLostItem />
         </div>
         <div className="w-[50%] h-96 mt-16">
-          <Heading title="Recent My Found Item" />
-          <RecentMyFoundItem email={myProfile?.data?.user?.email} />
+          <Heading title="Recent Found Item" />
+          <RecentMyFoundItem />
         </div>
       </div>
     </Box>
   );
 };
 
-export default UserDetails;
+export default AdminDetails;

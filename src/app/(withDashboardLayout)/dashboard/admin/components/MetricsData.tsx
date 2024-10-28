@@ -58,14 +58,14 @@ const MetricsData = () => {
 
       <div className="flex justify-between">
         {/* //bar chart */}
-        <BarChartComponent />
+        <BarChartComponent data={data?.data} />
 
         <div className="w-96 h-96 mt-16">
           <UserManagementTable />
         </div>
 
         {/* pie chart */}
-        <PieChartComponent />
+        <PieChartComponent data={data?.data} />
       </div>
     </div>
   );

@@ -8,7 +8,13 @@ const metaApi = baseApi.injectEndpoints({
         method: "GET",
       }),
     }),
+    getUserMetaData: builder.query({
+      query: () => ({
+        url: "/meta/user",
+        method: "GET",
+      }),
+    }),
   }),
 });
 
-export const { useGetMetaDataQuery } = metaApi;
+export const { useGetMetaDataQuery, useGetUserMetaDataQuery } = metaApi;

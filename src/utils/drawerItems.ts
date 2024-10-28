@@ -22,7 +22,7 @@ export const drawerItems = (role: UserRole): DrawerItem[] => {
           icon: EqualizerIcon,
         },
         {
-          title: "Profile",
+          title: "My Profile",
           path: `${role}/my-profile`,
           icon: PersonIcon,
         },
@@ -50,6 +50,11 @@ export const drawerItems = (role: UserRole): DrawerItem[] => {
           title: "Dashboard",
           path: `${role}`,
           icon: EqualizerIcon,
+        },
+        {
+          title: "My Profile",
+          path: `${role}/admin-profile`,
+          icon: PersonIcon,
         },
         {
           title: "User Management",
