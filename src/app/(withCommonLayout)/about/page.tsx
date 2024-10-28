@@ -9,11 +9,11 @@ const AboutPage = () => {
           <Typography
             component="h1"
             fontSize={{
-              md: "48px",
-              xs: "32px",
+              md: "32px",
+              xs: "24px",
             }}
             color="skyblue"
-            mb={12}
+            mb={4}
             mt={6}
           >
             Purpose and Mission
@@ -33,12 +33,12 @@ const AboutPage = () => {
           <Typography
             component="h1"
             fontSize={{
-              md: "48px",
-              xs: "32px",
+              md: "32px",
+              xs: "24px",
             }}
             color="skyblue"
-            mb={16}
-            mt={12}
+            mb={4}
+            mt={6}
           >
             Our Dedicated Team
           </Typography>

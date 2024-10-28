@@ -119,24 +119,14 @@ const FoundItemForm = () => {
               />
             </Grid>
           </Grid>
-          <Box
-            textAlign="center"
-            mt={8}
-            mb={4}
-            display="flex"
-            justifyContent="space-between"
-          >
+          <Box textAlign="center" mt={8} mb={4} justifyContent={"center"}>
             <Button
               type="submit"
               sx={{ bgcolor: "#32c2c7" }}
               disabled={submitting}
             >
-              Submit Found Item
+              Submit
             </Button>
-
-            <Link href={"/found-item"}>
-              <Button variant="outlined">For Claim A Item Go Here</Button>
-            </Link>
           </Box>
         </FLForms>
       )}

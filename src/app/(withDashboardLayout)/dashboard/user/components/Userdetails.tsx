@@ -1,81 +1,59 @@
 "use client";
 
 import { useGetMyProfileQuery } from "@/redux/features/auth/authApi";
+import EmailRoundedIcon from "@mui/icons-material/EmailRounded";
 import { Avatar, Box, Stack, Typography } from "@mui/material";
 import Image from "next/image";
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
 import Link from "next/link";
+import RecentMyLostItem from "./RecentMyLostItem";
+import Heading from "@/components/shared/Heading";
 
 const UserDetails = () => {
   const { data: myProfile } = useGetMyProfileQuery({});
 
+  console.log(myProfile);
+
   return (
     <Box>
-      <Box
-        position="relative"
-        right={{
-          md: -864,
-          xs: -308,
-        }}
-        top={40}
-        bgcolor="white"
-        width="32px"
-        borderRadius={48}
-        textAlign="center"
-        pl={1}
-        pr={1}
-      >
-        <Link href={"user/update-user"}>
-          <ModeEditIcon />
-        </Link>
-      </Box>
-      <Stack
-        direction={{ xs: "column", md: "row" }}
-        gap={{ xs: 4 }}
-        alignItems="center"
-        bgcolor="pink"
-        borderRadius={6}
-        width={{
-          md: "50%",
-          xs: "100%",
-        }}
-        mx={{
-          md: "auto",
-        }}
-        p={4}
-        boxShadow={16}
-      >
-        <Box>
-          <Avatar
-            alt={myProfile?.data?.user?.name}
-            src={myProfile?.data?.photoUrl}
-            sx={{ width: 120, height: 120, mb: "32px" }}
-          />
-
-          <Typography width={{ md: "50%" }}>{myProfile?.data?.bio}</Typography>
+      <div className="bg-pink-50 p-4 rounded-md shadow-xl">
+        <Box sx={{ display: { md: "flex", gap: 36 } }}>
+          <div className="bg-gray-200 rounded-md w-36">
+            <img src={myProfile?.data?.photoUrl} alt="" className="w-36 h-36" />
+          </div>
+          <div>
+            <div>
+              <Box sx={{ display: "flex", gap: 100 }}>
+                <div>
+                  <h1 className="text-black font-[500px] text-[20px] ">
+                    {myProfile?.data?.user?.name}
+                  </h1>
+                </div>
+                <Box>
+                  <Link href={"/update-user"}>
+                    <button className="py-1 bg-[#32c2c7] text-white rounded-md w-24">
+                      Edit Profile
+                    </button>
+                  </Link>
+                </Box>
+              </Box>
+              <p className="bg-fuchsia-100 p-1 w-12 text-center rounded">
+                {myProfile?.data?.user?.role}
+              </p>
+              <p className="mt-6">
+                <EmailRoundedIcon sx={{ mr: 1 }} />
+                {myProfile?.data?.user?.email}
+              </p>
+              <p className="mt-1">Age: {myProfile?.data?.age}</p>
+            </div>
+          </div>
         </Box>
-        <Box>
-          <Typography component="h1" variant="h4" mb={4}>
-            {myProfile?.data?.user?.name}
-          </Typography>
-          <Typography fontStyle="oblique">
-            Role :
-            <Typography component="span">
-              {myProfile?.data?.user?.role}
-            </Typography>
-          </Typography>
-          <Typography fontStyle="oblique" mt={2}>
-            Email :
-            <Typography component="span">
-              {myProfile?.data?.user?.email}
-            </Typography>
-          </Typography>
-          <Typography fontStyle="oblique" mt={2}>
-            Age :
-            <Typography component="span">{myProfile?.data?.age}</Typography>
-          </Typography>
-        </Box>
-      </Stack>
+        <p className="mt-6">{myProfile?.data?.bio}</p>
+      </div>
+      <div className="w-96 h-96 mt-16">
+        <Heading title="Recent My Lost Item" />
+        <RecentMyLostItem email={myProfile?.data?.user?.email} />
+      </div>
     </Box>
   );
 };

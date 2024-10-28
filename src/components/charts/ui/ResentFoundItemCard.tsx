@@ -1,8 +1,8 @@
 "use client";
 
-import ClaimModal from "@/components/claimModal/ClaimModal";
 import { useGetFoundItemQuery } from "@/redux/features/foundItem/foundItemApi";
 import { TFoundItem } from "@/types/common";
+import PlaceIcon from "@mui/icons-material/Place";
 import {
   Box,
   Button,
@@ -10,22 +10,19 @@ import {
   CardActionArea,
   CardActions,
   CardContent,
-  Container,
   Grid,
   Typography,
 } from "@mui/material";
 import Image from "next/image";
-import { useState } from "react";
-import PlaceIcon from "@mui/icons-material/Place";
 import Link from "next/link";
 
-const FoundItemsCard = () => {
+const RecentFoundItemsCard = () => {
   const { data: foundItems } = useGetFoundItemQuery({});
 
   return (
-    <Box mb={4} mx={12}>
+    <Box mb={4}>
       <Grid container spacing={4}>
-        {foundItems?.data?.map((item: TFoundItem) => (
+        {foundItems?.data?.slice(0, 4).map((item: TFoundItem) => (
           <Grid key={item.id} item md={3} sm={6} xs={12}>
             <Card sx={{ maxWidth: 600 }}>
               <CardActionArea>
@@ -61,4 +58,4 @@ const FoundItemsCard = () => {
   );
 };
 
-export default FoundItemsCard;
+export default RecentFoundItemsCard;
