@@ -1,23 +1,21 @@
 "use client";
 
-import { useGetSingleLostItemQuery } from "@/redux/features/lostItem/lostItemApi";
-import { Box, Container, Rating, Typography } from "@mui/material";
-import LocationOnIcon from "@mui/icons-material/LocationOn";
-import PermContactCalendarRoundedIcon from "@mui/icons-material/PermContactCalendarRounded";
-import CalendarMonthRoundedIcon from "@mui/icons-material/CalendarMonthRounded";
-import CategoryRoundedIcon from "@mui/icons-material/CategoryRounded";
-import { useGiveReviewMutation } from "@/redux/features/review/reviewApi";
+import ClaimModal from "@/components/claimModal/ClaimModal";
 import FLForms from "@/components/forms/FLForms";
 import FLInput from "@/components/forms/FLInput";
+import { useGetSingleLostItemQuery } from "@/redux/features/lostItem/lostItemApi";
+import { useGiveReviewMutation } from "@/redux/features/review/reviewApi";
+import CalendarMonthRoundedIcon from "@mui/icons-material/CalendarMonthRounded";
+import CategoryRoundedIcon from "@mui/icons-material/CategoryRounded";
+import LocationOnIcon from "@mui/icons-material/LocationOn";
+import { Box, Container, Rating, Typography } from "@mui/material";
+import Image from "next/image";
+import React from "react";
 import { FieldValues } from "react-hook-form";
-import React, { useState } from "react";
-import { useRouter } from "next/navigation";
 import { toast } from "sonner";
-import ClaimModal from "@/components/claimModal/ClaimModal";
 
-const page = ({ params }: { params: { id: string } }) => {
-  const router = useRouter();
-  const [isOpenModal, setIsOpenModal] = useState<boolean>(false);
+const LostItemDetails = ({ params }: { params: { id: string } }) => {
+  const [isOpenModal, setIsOpenModal] = React.useState<boolean>(false);
   const [value, setValue] = React.useState<number | null>(0);
 
   const { data } = useGetSingleLostItemQuery(params.id);
@@ -28,7 +26,6 @@ const page = ({ params }: { params: { id: string } }) => {
     return date.toLocaleDateString("en-CA");
   };
   const handleSubmit = async (data: FieldValues) => {
-    console.log(data);
     const resData = {
       tips: data.tips,
       lostItemId: params.id,
@@ -38,7 +35,6 @@ const page = ({ params }: { params: { id: string } }) => {
     const res = await createReview(resData).unwrap();
 
     if (res?.success) {
-      router.refresh();
       toast.success("Submit Your Review Successfully");
     }
   };
@@ -48,10 +44,12 @@ const page = ({ params }: { params: { id: string } }) => {
       <Box sx={{ mx: 24, my: 6 }}>
         <Box sx={{ display: { md: "flex" }, gap: 28 }}>
           <div className="bg-gray-200 rounded-md">
-            <img
+            <Image
               src={data?.data?.photo}
-              alt="lost item image"
-              className="w-[400px] h-96 rounded-md"
+              alt="found item image"
+              width={400}
+              height={384}
+              className="rounded-md"
             />
           </div>
           <Box>
@@ -147,13 +145,4 @@ const page = ({ params }: { params: { id: string } }) => {
   );
 };
 
-export default page;
-
-// id: string;
-//     userId: string;
-//     foundItemId: string | null;
-//     lostItemId: string | null;
-//     ratting: number;
-//     tips: string;
-//     createdAt: Date;
-//     updatedAt: Date;
+export default LostItemDetails;

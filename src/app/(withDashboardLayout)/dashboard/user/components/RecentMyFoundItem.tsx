@@ -5,27 +5,12 @@ import { Box, CircularProgress } from "@mui/material";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
 
 const RecentMyFoundItem = ({ email }: { email?: string }) => {
-  let dataInfo;
-  let loadingInfo;
-
-  if (email) {
-    const { data: foundItems, isLoading } = useGetFoundItemQuery({
-      email: email,
-    });
-
-    dataInfo = foundItems;
-    loadingInfo = isLoading;
-  } else {
-    const { data: foundItems, isLoading } = useGetFoundItemQuery({
-      email: email,
-    });
-
-    dataInfo = foundItems;
-    loadingInfo = isLoading;
-  }
+  const { data: foundItems, isLoading } = useGetFoundItemQuery({
+    email: email,
+  });
 
   const rows =
-    dataInfo?.data?.map((item: { user: { name: any } }) => ({
+    foundItems?.data?.map((item: { user: { name: any } }) => ({
       ...item,
       userName: item.user?.name,
     })) ?? [];
@@ -39,7 +24,7 @@ const RecentMyFoundItem = ({ email }: { email?: string }) => {
   return (
     <Box mb={36}>
       <Box sx={{ height: "100%", width: "100%" }}>
-        {loadingInfo ? (
+        {isLoading ? (
           <Box
             sx={{
               display: "flex",
