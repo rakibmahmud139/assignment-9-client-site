@@ -39,7 +39,7 @@ function Navbar() {
   };
 
   return (
-    <Box position="static">
+    <Box position="static" bgcolor={"#2563eb"}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Link href={"/"}>
@@ -128,7 +128,7 @@ function Navbar() {
           {token && (
             <Box sx={{ flexGrow: 0 }}>
               <Link href={`/dashboard/${role}`}>
-                <Typography color="black">My Profile</Typography>
+                <Typography color="white">My Profile</Typography>
               </Link>
             </Box>
           )}

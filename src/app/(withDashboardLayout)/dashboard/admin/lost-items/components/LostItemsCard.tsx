@@ -1,35 +1,109 @@
 "use client";
 
-import { useGetLostItemQuery } from "@/redux/features/lostItem/lostItemApi";
-import { Box, Button, Grid, TextField } from "@mui/material";
-import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
-import CardContent from "@mui/material/CardContent";
+import Heading from "@/components/shared/Heading";
+import {
+  useDeleteLostItemMutation,
+  useGetLostItemQuery,
+} from "@/redux/features/lostItem/lostItemApi";
+import DeleteIcon from "@mui/icons-material/Delete";
+import ModeEditOutlineIcon from "@mui/icons-material/ModeEditOutline";
+import { Box, CircularProgress, IconButton } from "@mui/material";
 import Typography from "@mui/material/Typography";
+import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
-import { TLostItem } from "../../../../../../types/common";
-import { useDebounce } from "@/redux/hooks";
+import { toast } from "sonner";
 
 const LostItemsCard = () => {
-  const query: Record<string, unknown> = {};
-  const [searchTerm, setSearchTerm] = useState("");
+  // const query: Record<string, unknown> = {};
+  // const [searchTerm, setSearchTerm] = useState("");
 
-  const debounceTerm = useDebounce({
-    searchQuery: searchTerm,
-    delay: 1000,
-  });
+  // const debounceTerm = useDebounce({
+  //   searchQuery: searchTerm,
+  //   delay: 1000,
+  // });
 
-  if (!!debounceTerm) {
-    query["searchTerm"] = searchTerm;
-  }
+  // if (!!debounceTerm) {
+  //   query["searchTerm"] = searchTerm;
+  // }
 
-  const { data: LostItems } = useGetLostItemQuery({ ...query });
+  // const { data: LostItems } = useGetLostItemQuery({ ...query });
+  const { data: lostItems, isLoading } = useGetLostItemQuery({});
+
+  const [deleteItem] = useDeleteLostItemMutation();
+
+  const handleDelete = async (id: string) => {
+    const res = await deleteItem(id).unwrap();
+
+    if (res?.success) {
+      toast.success(res?.message);
+    }
+  };
+
+  const columns: GridColDef[] = [
+    {
+      field: "photo",
+      headerName: "Image",
+      flex: 1,
+      renderCell: (params) => (
+        <Box
+          sx={{
+            width: 50,
+            height: 50,
+            overflow: "hidden",
+            borderRadius: "8px",
+          }}
+        >
+          {params.value ? (
+            <Image
+              src={params.value}
+              alt="Lost Item Image"
+              width={50}
+              height={50}
+              style={{ objectFit: "cover", width: "100%", height: "100%" }}
+            />
+          ) : (
+            <Typography variant="caption" color="textSecondary">
+              No Image
+            </Typography>
+          )}
+        </Box>
+      ),
+    },
+    { field: "lostItemName", headerName: "Lost Item Name", flex: 1 },
+    { field: "location", headerName: "Location", flex: 1 },
+    { field: "found", headerName: "Found", flex: 1 },
+    { field: "contactNumber", headerName: "Contact Number", flex: 1 },
+    {
+      field: "action",
+      headerName: "Action",
+      flex: 1,
+      headerAlign: "center",
+      align: "center",
+      renderCell: ({ row }) => {
+        return (
+          <Box display="flex" justifyContent="space-evenly">
+            <IconButton
+              onClick={() => handleDelete(row?.id)}
+              aria-label="delete"
+            >
+              <DeleteIcon sx={{ color: "red" }} />
+            </IconButton>
+
+            <Link href={`lost-items/item-update/${row?.id}`}>
+              <IconButton aria-label="edit">
+                <ModeEditOutlineIcon sx={{ color: "blue" }} />
+              </IconButton>
+            </Link>
+          </Box>
+        );
+      },
+    },
+  ];
 
   return (
-    <Box>
-      <Typography
+    <Box mb={36}>
+      {/* <Typography
         display="flex"
         gap={{
           md: 2,
@@ -43,37 +117,33 @@ const LostItemsCard = () => {
           onChange={(e) => setSearchTerm(e.target.value)}
           size="small"
         />
-      </Typography>
+      </Typography> */}
+      <Heading title="Recent Lost Item" />
 
-      <Grid container spacing={2}>
-        {LostItems?.data?.map((lostItem: TLostItem) => (
-          <Grid key={lostItem?.id} item md={4}>
-            <Card sx={{ maxWidth: 345 }}>
-              <Image
-                src={lostItem?.photo}
-                alt="lostItemImage"
-                width={345}
-                height={120}
-                style={{ height: 200 }}
-              />
-              <CardContent>
-                <Typography gutterBottom variant="h5" component="div">
-                  {lostItem?.lostItemName}
-                </Typography>
-                <Typography>Location: {lostItem?.location}</Typography>
-                <Typography variant="body2" color="text.secondary">
-                  Description: {lostItem?.description}
-                </Typography>
-              </CardContent>
-              <CardActions>
-                <Link href={`/lost-items`}>
-                  <Button>All Lost Item</Button>
-                </Link>
-              </CardActions>
-            </Card>
-          </Grid>
-        ))}
-      </Grid>
+      <Box>
+        <Box sx={{ height: "100%", width: "100%" }}>
+          {isLoading ? (
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                width: "100%",
+                height: "100%",
+              }}
+            >
+              <CircularProgress />
+            </Box>
+          ) : (
+            <DataGrid
+              rows={lostItems?.data ?? []}
+              columns={columns}
+              hideFooterPagination={true}
+              hideFooter={true}
+            />
+          )}
+        </Box>
+      </Box>
     </Box>
   );
 };

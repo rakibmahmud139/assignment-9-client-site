@@ -1,19 +1,15 @@
 "use client";
 
+import Heading from "@/components/shared/Heading";
 import { useGetMyProfileQuery } from "@/redux/features/auth/authApi";
 import {
   useDeleteLostItemMutation,
   useGetLostItemQuery,
 } from "@/redux/features/lostItem/lostItemApi";
-import { TLostItem } from "@/types";
-import {
-  Button,
-  Card,
-  CardActions,
-  CardContent,
-  Grid,
-  Typography,
-} from "@mui/material";
+import DeleteIcon from "@mui/icons-material/Delete";
+import ModeEditOutlineIcon from "@mui/icons-material/ModeEditOutline";
+import { Box, CircularProgress, IconButton, Typography } from "@mui/material";
+import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import Image from "next/image";
 import Link from "next/link";
 import { toast } from "sonner";
@@ -22,7 +18,7 @@ const MyLostItemCard = () => {
   const { data: user } = useGetMyProfileQuery({});
   const [deleteLostItem] = useDeleteLostItemMutation();
 
-  const { data: lostItems } = useGetLostItemQuery({
+  const { data: lostItems, isLoading } = useGetLostItemQuery({
     email: user?.data?.user?.email,
   });
 
@@ -34,58 +30,96 @@ const MyLostItemCard = () => {
     }
   };
 
-  return (
-    <div>
-      <Grid container spacing={2}>
-        {lostItems?.data?.map((lostItem: TLostItem) => (
-          <Grid key={lostItem?.id} item md={4}>
-            <Card sx={{ maxWidth: 345, maxHeight: 600 }}>
-              <Image
-                src={lostItem?.photo}
-                alt="lostItemImage"
-                width={345}
-                height={60}
-                style={{ height: 200 }}
-              />
-              <CardContent>
-                <Typography gutterBottom variant="h5" component="div">
-                  {lostItem?.lostItemName}
-                </Typography>
-                <Typography mt={1}>
-                  <Typography variant="h6">Location:</Typography>
-                  {lostItem?.location}
-                </Typography>
-                <Typography variant="body2" color="text.secondary" my={1}>
-                  <Typography variant="h6">Date:</Typography>
-                  {lostItem?.date?.substring(0, 10)}
-                </Typography>
-              </CardContent>
-              <CardActions
-                sx={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  alignItems: "center",
-                }}
-              >
-                <Link href={`my-lost-item/update/${lostItem?.id}`}>
-                  <Button>Edit</Button>
-                </Link>
+  const columns: GridColDef[] = [
+    {
+      field: "photo",
+      headerName: "Image",
+      flex: 1,
+      renderCell: (params) => (
+        <Box
+          sx={{
+            width: 50,
+            height: 50,
+            overflow: "hidden",
+            borderRadius: "8px",
+          }}
+        >
+          {params.value ? (
+            <Image
+              src={params.value}
+              alt="Lost Item Image"
+              width={50}
+              height={50}
+              style={{ objectFit: "cover", width: "100%", height: "100%" }}
+            />
+          ) : (
+            <Typography variant="caption" color="textSecondary">
+              No Image
+            </Typography>
+          )}
+        </Box>
+      ),
+    },
+    { field: "lostItemName", headerName: "Lost Item Name", flex: 1 },
+    { field: "location", headerName: "Location", flex: 1 },
+    { field: "found", headerName: "Found", flex: 1 },
+    { field: "contactNumber", headerName: "Contact Number", flex: 1 },
+    {
+      field: "action",
+      headerName: "Action",
+      flex: 1,
+      headerAlign: "center",
+      align: "center",
+      renderCell: ({ row }) => {
+        return (
+          <Box display="flex" justifyContent="space-evenly">
+            <IconButton
+              onClick={() => handleDelete(row?.id)}
+              aria-label="delete"
+            >
+              <DeleteIcon sx={{ color: "red" }} />
+            </IconButton>
 
-                <Button
-                  onClick={() => handleDelete(lostItem?.id)}
-                  sx={{
-                    backgroundColor: "red",
-                    color: "white",
-                  }}
-                >
-                  Delete
-                </Button>
-              </CardActions>
-            </Card>
-          </Grid>
-        ))}
-      </Grid>
-    </div>
+            <Link href={`my-lost-item/update/${row?.id}`}>
+              <IconButton aria-label="edit">
+                <ModeEditOutlineIcon sx={{ color: "blue" }} />
+              </IconButton>
+            </Link>
+          </Box>
+        );
+      },
+    },
+  ];
+
+  return (
+    <Box mb={36}>
+      <Heading title="My Lost Items" />
+
+      <Box>
+        <Box sx={{ height: "100%", width: "100%" }}>
+          {isLoading ? (
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                width: "100%",
+                height: "100%",
+              }}
+            >
+              <CircularProgress />
+            </Box>
+          ) : (
+            <DataGrid
+              rows={lostItems?.data ?? []}
+              columns={columns}
+              hideFooterPagination={true}
+              hideFooter={true}
+            />
+          )}
+        </Box>
+      </Box>
+    </Box>
   );
 };
 

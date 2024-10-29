@@ -8,7 +8,6 @@ import { Stack } from "@mui/material";
 
 const UserMetrics = () => {
   const { data } = useGetUserMetaDataQuery({});
-  console.log(data);
 
   return (
     <div>

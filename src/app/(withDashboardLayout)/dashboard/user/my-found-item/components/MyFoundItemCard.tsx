@@ -1,30 +1,24 @@
 "use client";
 
+import Heading from "@/components/shared/Heading";
 import { useGetMyProfileQuery } from "@/redux/features/auth/authApi";
 import {
   useDeleteFoundItemMutation,
   useGetFoundItemQuery,
 } from "@/redux/features/foundItem/foundItemApi";
-import { TFoundItem } from "@/types/common";
-import {
-  Box,
-  Button,
-  Card,
-  CardActions,
-  CardContent,
-  Grid,
-  Typography,
-} from "@mui/material";
+import DeleteIcon from "@mui/icons-material/Delete";
+import ModeEditOutlineIcon from "@mui/icons-material/ModeEditOutline";
+import { Box, CircularProgress, IconButton, Typography } from "@mui/material";
+import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import Image from "next/image";
 import Link from "next/link";
 import { toast } from "sonner";
-import UpdateStatus from "./UpdateStatus";
 
 const MyFoundItemCard = () => {
   const { data: user } = useGetMyProfileQuery({});
   const [deleteFoundItem] = useDeleteFoundItemMutation();
 
-  const { data: foundItems } = useGetFoundItemQuery({
+  const { data: foundItems, isLoading } = useGetFoundItemQuery({
     email: user?.data?.user?.email,
   });
 
@@ -36,58 +30,96 @@ const MyFoundItemCard = () => {
     }
   };
 
+  const columns: GridColDef[] = [
+    {
+      field: "photo",
+      headerName: "Image",
+      flex: 1,
+      renderCell: (params) => (
+        <Box
+          sx={{
+            width: 50,
+            height: 50,
+            overflow: "hidden",
+            borderRadius: "8px",
+          }}
+        >
+          {params.value ? (
+            <Image
+              src={params.value}
+              alt="Lost Item Image"
+              width={50}
+              height={50}
+              style={{ objectFit: "cover", width: "100%", height: "100%" }}
+            />
+          ) : (
+            <Typography variant="caption" color="textSecondary">
+              No Image
+            </Typography>
+          )}
+        </Box>
+      ),
+    },
+    { field: "foundItemName", headerName: "Found Item Name", flex: 1 },
+    { field: "location", headerName: "Location", flex: 1 },
+    { field: "contactNumber", headerName: "Contact Number", flex: 1 },
+    {
+      field: "action",
+      headerName: "Action",
+      flex: 1,
+      headerAlign: "center",
+      align: "center",
+      renderCell: ({ row }) => {
+        return (
+          <Box display="flex" justifyContent="space-evenly">
+            <IconButton
+              onClick={() => handleDelete(row?.id)}
+              aria-label="delete"
+            >
+              <DeleteIcon sx={{ color: "red" }} />
+            </IconButton>
+
+            <Link href={`my-found-item/update/${row?.id}`}>
+              <IconButton aria-label="edit">
+                <ModeEditOutlineIcon sx={{ color: "blue" }} />
+              </IconButton>
+            </Link>
+          </Box>
+        );
+      },
+    },
+  ];
+
   return (
     <Box>
-      <Grid container spacing={2}>
-        {foundItems?.data?.map((foundItem: TFoundItem) => (
-          <Grid key={foundItem?.id} item md={4}>
-            <Card sx={{ maxWidth: 345 }}>
-              <Image
-                src={foundItem?.photo}
-                alt="FoundItemImage"
-                width={345}
-                height={120}
-                style={{ height: 200 }}
-              />
-              <CardContent>
-                <Typography gutterBottom variant="h5" component="div">
-                  {foundItem?.foundItemName}
-                </Typography>
-                <Typography mt={1}>
-                  <Typography variant="h6">Location:</Typography>
-                  {foundItem?.location}
-                </Typography>
-                <Typography variant="body2" color="text.secondary" my={1}>
-                  <Typography variant="h6">Date:</Typography>
-                  {foundItem?.date?.substring(0, 10)}
-                </Typography>
-                <UpdateStatus id={foundItem?.id} />
-              </CardContent>
-              <CardActions
+      <Box>
+        <Heading title="My Found Items" />
+
+        <Box>
+          <Box sx={{ height: "100%", width: "100%" }}>
+            {isLoading ? (
+              <Box
                 sx={{
                   display: "flex",
-                  justifyContent: "space-between",
+                  justifyContent: "center",
                   alignItems: "center",
+                  width: "100%",
+                  height: "100%",
                 }}
               >
-                <Link href={`my-found-item/update/${foundItem?.id}`}>
-                  <Button>Edit</Button>
-                </Link>
-
-                <Button
-                  onClick={() => handleDelete(foundItem?.id)}
-                  sx={{
-                    backgroundColor: "red",
-                    color: "white",
-                  }}
-                >
-                  Delete
-                </Button>
-              </CardActions>
-            </Card>
-          </Grid>
-        ))}
-      </Grid>
+                <CircularProgress />
+              </Box>
+            ) : (
+              <DataGrid
+                rows={foundItems?.data ?? []}
+                columns={columns}
+                hideFooterPagination={true}
+                hideFooter={true}
+              />
+            )}
+          </Box>
+        </Box>
+      </Box>
     </Box>
   );
 };

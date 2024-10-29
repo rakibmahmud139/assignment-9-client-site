@@ -5,9 +5,7 @@ import MyClaimItemCard from "./components/MyClaimItemCard";
 const MyClaimItemPage = () => {
   return (
     <Box>
-      <Heading title="My Claim Items" />
-
-      <Box mt={8}>
+      <Box>
         <MyClaimItemCard />
       </Box>
     </Box>

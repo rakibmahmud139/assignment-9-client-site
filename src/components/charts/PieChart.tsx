@@ -63,7 +63,7 @@ export function PieChartComponent({ data }: { data: TMetaData }) {
   }, []);
 
   return (
-    <div className="w-96 h-96 mt-16">
+    <div className="w-96 h-96 md:mt-16 mt-8">
       <Card>
         <CardContent className="flex-1 pb-0">
           <ChartContainer

@@ -20,13 +20,13 @@ const UserDetails = () => {
           </div>
           <div>
             <div>
-              <Box sx={{ display: "flex", gap: 80 }}>
+              <Box sx={{ display: { md: "flex" }, gap: 80 }}>
                 <div>
                   <h1 className="text-black font-[500px] text-[20px] ">
                     {myProfile?.data?.user?.name}
                   </h1>
                 </div>
-                <Box sx={{ display: "flex", gap: 4 }}>
+                <Box sx={{ display: { md: "flex" }, gap: 4 }}>
                   <Link href={"/update-user"}>
                     <button className="py-1 bg-[#32c2c7] text-white rounded-md w-24">
                       Edit Profile
@@ -57,7 +57,7 @@ const UserDetails = () => {
           <Heading title="Recent My Lost Item" />
           <RecentMyLostItem email={myProfile?.data?.user?.email} />
         </div>
-        <div className="w-[50%] h-96 mt-16">
+        <div className="w-[50%] h-96 md:mt-16 mt-8">
           <Heading title="Recent My Found Item" />
           <RecentMyFoundItem email={myProfile?.data?.user?.email} />
         </div>
