@@ -90,14 +90,14 @@ const HeroSection = () => {
                   </a>
                   <a
                     href="/submit-foundItem"
-                    className="bg-[#239FA4] ml-5 text-white shadow-xl rounded-lg py-3 px-8 text-xl mt-6 md:mt-12 inline-block"
+                    className="bg-[#239FA4] md:ml-5 text-white shadow-xl rounded-lg py-3 px-6 text-xl mt-6 md:mt-12 inline-block"
                   >
                     Report Found Item
                   </a>
                 </div>
               </div>
             </div>
-            <div className="col-span-12 lg:col-span-6 text-center lg:text-start">
+            <div className="col-span-12 lg:col-span-6 mt-8 md:mt-28 lg:mt-0 text-center lg:text-start">
               <img
                 src={banner.src}
                 alt=""

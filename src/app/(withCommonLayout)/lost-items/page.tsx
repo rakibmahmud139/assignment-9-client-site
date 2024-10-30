@@ -6,9 +6,7 @@ const AllLostItemPage = () => {
   return (
     <Box mb={16} mt={3}>
       <Heading title="All Lost Items" />
-      <Container maxWidth="xl" sx={{ mx: 8 }}>
-        <AllLostItemCard />
-      </Container>
+      <AllLostItemCard />
     </Box>
   );
 };

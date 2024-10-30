@@ -19,7 +19,7 @@ const LostItemCard = () => {
       {!isLoading && (
         <Grid container spacing={4}>
           {lostItems?.data?.slice(0, 4).map((lostItem: TLostItem) => (
-            <Grid key={lostItem?.id} item md={3} sm={6} xs={12}>
+            <Grid key={lostItem?.id} item md={4} lg={3} sm={6} xs={12}>
               <Card sx={{ maxWidth: 345 }}>
                 <Box>
                   <Image

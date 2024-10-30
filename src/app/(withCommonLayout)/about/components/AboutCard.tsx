@@ -17,7 +17,7 @@ const AboutCard = () => {
   return (
     <Grid container spacing={4}>
       {users?.data.map((user: TUser) => (
-        <Grid item md={4} xs={12} gap={1} key={user.id}>
+        <Grid item md={4} sm={6} xs={12} gap={1} key={user.id}>
           <Card sx={{ maxWidth: 345, borderRadius: "48px", color: "#bbdefb" }}>
             <CardActionArea
               sx={{

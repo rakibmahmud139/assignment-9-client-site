@@ -23,10 +23,10 @@ const FoundItemsCard = () => {
   const { data: foundItems } = useGetFoundItemQuery({});
 
   return (
-    <Box mb={4} mx={12}>
+    <div className="md:mx-16 mx-12 mb-4">
       <Grid container spacing={4}>
         {foundItems?.data?.map((item: TFoundItem) => (
-          <Grid key={item.id} item md={3} sm={6} xs={12}>
+          <Grid key={item.id} item md={4} lg={3} sm={6} xs={12}>
             <Card sx={{ maxWidth: 600 }}>
               <CardActionArea>
                 <Image
@@ -57,7 +57,7 @@ const FoundItemsCard = () => {
           </Grid>
         ))}
       </Grid>
-    </Box>
+    </div>
   );
 };
 

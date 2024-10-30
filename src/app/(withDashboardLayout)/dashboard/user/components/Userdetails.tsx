@@ -22,7 +22,7 @@ const UserDetails = () => {
             <div>
               <Box sx={{ display: { md: "flex" }, gap: 80 }}>
                 <div>
-                  <h1 className="text-black font-[500px] text-[20px] ">
+                  <h1 className="text-black font-[500px] text-[20px] my-2 md:my-0 ">
                     {myProfile?.data?.user?.name}
                   </h1>
                 </div>
@@ -39,7 +39,7 @@ const UserDetails = () => {
                   </Link>
                 </Box>
               </Box>
-              <p className="bg-fuchsia-200 text-black p-1 w-12 text-center rounded">
+              <p className="bg-fuchsia-200 text-black p-1 w-12 text-center rounded mt-2 md:mt-0">
                 {myProfile?.data?.user?.role}
               </p>
               <p className="mt-6 text-black">
@@ -53,11 +53,11 @@ const UserDetails = () => {
         <p className="mt-6 text-black">{myProfile?.data?.bio}</p>
       </div>
       <div className="md:flex gap-6 justify-between">
-        <div className="w-[50%] h-96 mt-16">
+        <div className="md:w-[50%] h-96 mt-16">
           <Heading title="Recent My Lost Item" />
           <RecentMyLostItem email={myProfile?.data?.user?.email} />
         </div>
-        <div className="w-[50%] h-96 md:mt-16 mt-8">
+        <div className="md:w-[50%] h-96 md:mt-16 mt-8">
           <Heading title="Recent My Found Item" />
           <RecentMyFoundItem email={myProfile?.data?.user?.email} />
         </div>

@@ -41,9 +41,9 @@ const FoundItemDetails = ({ params }: { params: { id: string } }) => {
 
   return (
     <Container maxWidth="xl">
-      <Box sx={{ mx: 24, my: 6 }}>
+      <div className="lg:mx-8 xl:mx-32 md:mx-8 mx-0 my-16">
         <Box sx={{ display: { md: "flex" }, gap: 28 }}>
-          <div className="bg-gray-200 rounded-md">
+          <div>
             <img
               src={data?.data?.photo}
               alt="found item image"
@@ -53,11 +53,11 @@ const FoundItemDetails = ({ params }: { params: { id: string } }) => {
             />
           </div>
           <Box>
-            <h1 className="text-black font-[500px] text-[35px] ">
+            <h1 className="text-black font-[500px] xl:mt-0 lg:mt-0 md:mt-4 mt-4 text-[35px] ">
               {data?.data?.foundItemName}
             </h1>
             <div className="md:flex gap-4 mt-3">
-              <p className="bg-gray-200 py-2 px-2 text-black rounded-md">
+              <p className="bg-gray-200 py-2 px-2 xl:mb-0 lg:mb-0 md:mb-0 mb-4 text-black rounded-md">
                 <LocationOnIcon /> {data?.data?.location}
               </p>
               <p
@@ -140,7 +140,7 @@ const FoundItemDetails = ({ params }: { params: { id: string } }) => {
             </FLForms>
           </Box>
         </Box>
-      </Box>
+      </div>
     </Container>
   );
 };

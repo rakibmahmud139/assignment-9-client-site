@@ -23,7 +23,7 @@ const RecentFoundItemsCard = () => {
     <Box mb={4}>
       <Grid container spacing={4}>
         {foundItems?.data?.slice(0, 4).map((item: TFoundItem) => (
-          <Grid key={item.id} item md={3} sm={6} xs={12}>
+          <Grid key={item.id} item md={4} lg={3} sm={6} xs={12}>
             <Card sx={{ maxWidth: 600 }}>
               <CardActionArea>
                 <Image

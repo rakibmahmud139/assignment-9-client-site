@@ -1,15 +1,14 @@
 import Heading from "@/components/shared/Heading";
-import { Box, Container } from "@mui/material";
+import { Box } from "@mui/material";
 import LostItemCard from "./LostItemCard";
 
 const ResentLostItem = () => {
   return (
-    <Box mt={8} mx={12}>
-      <Box mb={8}>
-        <Heading title="Recent Lost Item" />
-
+    <Box mt={8}>
+      <Heading title="Recent Lost Item" />
+      <div className="md:mx-16 mx-12 mb-12">
         <LostItemCard />
-      </Box>
+      </div>
     </Box>
   );
 };

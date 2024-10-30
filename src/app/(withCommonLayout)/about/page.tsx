@@ -42,7 +42,9 @@ const AboutPage = () => {
           >
             Our Dedicated Team
           </Typography>
-          <AboutCard />
+          <div className="xl:mx-0 lg:mx-0 md:mx-0 mx-4">
+            <AboutCard />
+          </div>
         </Box>
       </Box>
     </Container>

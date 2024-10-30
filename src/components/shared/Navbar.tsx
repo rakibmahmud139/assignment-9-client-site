@@ -66,7 +66,7 @@ function Navbar() {
               aria-controls="menu-appbar"
               aria-haspopup="true"
               onClick={handleOpenNavMenu}
-              color="primary"
+              color="default"
             >
               <MenuIcon />
             </IconButton>
@@ -86,13 +86,15 @@ function Navbar() {
               onClose={handleCloseNavMenu}
               sx={{
                 display: { xs: "block", md: "none" },
-                color: "#fff",
+                color: "black",
               }}
             >
-              <MenuItems
-                handleCloseNavMenu={handleCloseNavMenu}
-                token={token}
-              />
+              <Box sx={{ bgcolor: "black" }}>
+                <MenuItems
+                  handleCloseNavMenu={handleCloseNavMenu}
+                  token={token}
+                />
+              </Box>
             </Menu>
           </Box>
           <Typography

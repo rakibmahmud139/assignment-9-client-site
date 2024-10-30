@@ -44,12 +44,12 @@ const LostItemDetails = ({ params }: { params: { id: string } }) => {
       <Box sx={{ mx: 24, my: 6 }}>
         <Box sx={{ display: { md: "flex" }, gap: 28 }}>
           <div className="bg-gray-200 rounded-md">
-            <Image
+            <img
               src={data?.data?.photo}
-              alt="found item image"
-              width={400}
-              height={384}
-              className="rounded-md"
+              alt="lost item image"
+              // width={400}
+              // height={384}
+              className="rounded-md w-[400px] h-96"
             />
           </div>
           <Box>
