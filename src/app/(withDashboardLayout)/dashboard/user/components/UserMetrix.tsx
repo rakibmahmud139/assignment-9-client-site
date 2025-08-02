@@ -11,14 +11,7 @@ const UserMetrics = () => {
 
   return (
     <div>
-      <Stack
-        direction={{
-          md: "row",
-          xs: "column",
-        }}
-        justifyContent="space-between"
-        gap={4}
-      >
+      <div className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-8">
         <div className="stats shadow-2xl ">
           <div className="stat bg-pink-200 shadow-2xl shadow-slate-800">
             <div className="stat-title text-gray-600 ">Lost Items</div>
@@ -45,14 +38,14 @@ const UserMetrics = () => {
             </div>
           </div>
         </div>
-      </Stack>
+      </div>
       <div className="mt-16">
         <Heading title="My Data Statics" />
-        <div className="md:flex justify-between">
+        <div className="lg:flex justify-between">
           <div>
             <BarChartComponent data={data?.data} />
           </div>
-          <div>
+          <div className="mt-4 lg:mt-0">
             <PieChartComponent data={data?.data} />
           </div>
         </div>

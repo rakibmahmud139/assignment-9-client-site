@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import { TrendingUp } from "lucide-react";
-import { Label, Pie, PieChart } from "recharts";
+import { Label, Pie, PieChart, ResponsiveContainer } from "recharts";
 
 import {
   Card,
@@ -63,26 +63,28 @@ export function PieChartComponent({ data }: { data: TMetaData }) {
   }, []);
 
   return (
-    <div className="w-96 h-96 md:mt-16 mt-8">
+    <div className="xl:w-[600px] lg:w-[500px] md:w-[400px] sm:w-full w-full h-auto">
       <Card>
         <CardContent className="flex-1 pb-0">
           <ChartContainer
             config={chartConfig}
             className="mx-auto aspect-square max-h-[212px]"
           >
-            <PieChart>
-              <ChartTooltip
-                cursor={false}
-                content={<ChartTooltipContent hideLabel />}
-              />
-              <Pie
-                data={data}
-                dataKey="totalLostItems"
-                nameKey="browser"
-                innerRadius={60}
-                strokeWidth={5}
-              ></Pie>
-            </PieChart>
+            <ResponsiveContainer width="100%" height={300}>
+              <PieChart>
+                <ChartTooltip
+                  cursor={false}
+                  content={<ChartTooltipContent hideLabel />}
+                />
+                <Pie
+                  data={data}
+                  dataKey="totalLostItems"
+                  nameKey="browser"
+                  innerRadius="60%"
+                  strokeWidth={5}
+                />
+              </PieChart>
+            </ResponsiveContainer>
           </ChartContainer>
         </CardContent>
       </Card>

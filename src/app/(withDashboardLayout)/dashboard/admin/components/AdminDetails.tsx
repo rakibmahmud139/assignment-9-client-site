@@ -16,14 +16,14 @@ const AdminDetails = () => {
     <Box>
       <div className="bg-pink-50 p-4 rounded-md shadow-xl">
         <Box sx={{ display: { md: "flex", gap: 36 } }}>
-          <div className="bg-gray-200 rounded-md w-36">
+          <div className="rounded-md w-36">
             <img src={myProfile?.data?.photoUrl} alt="" className="w-36 h-36" />
           </div>
           <div>
             <div>
-              <Box sx={{ display: "flex", gap: 80 }}>
+              <div className="xl:flex gap-96">
                 <div>
-                  <h1 className="text-black font-[500px] text-[20px] ">
+                  <h1 className="text-black font-[500px] text-[20px] my-2 md:my-0 ">
                     {myProfile?.data?.user?.name}
                   </h1>
                 </div>
@@ -39,8 +39,8 @@ const AdminDetails = () => {
                     </button>
                   </Link>
                 </Box>
-              </Box>
-              <p className="bg-fuchsia-200 text-black p-1 w-12 text-center rounded">
+              </div>
+              <p className="bg-fuchsia-200 text-black p-1 w-12 text-center rounded mt-2 xl:mt-0">
                 {myProfile?.data?.user?.role}
               </p>
               <p className="mt-6 text-black">
@@ -53,12 +53,12 @@ const AdminDetails = () => {
         </Box>
         <p className="mt-6 text-black">{myProfile?.data?.bio}</p>
       </div>
-      <div className="md:flex gap-6 justify-between">
-        <div className="w-[50%] h-96 mt-16">
+      <div className="lg:flex gap-6 justify-between">
+        <div className="lg:w-[50%] h-96 mt-16">
           <Heading title="Recent Lost Item" />
           <RecentMyLostItem />
         </div>
-        <div className="w-[50%] h-96 mt-16">
+        <div className="lg:w-[50%] md:mt-16 mt-8">
           <Heading title="Recent Found Item" />
           <RecentMyFoundItem />
         </div>

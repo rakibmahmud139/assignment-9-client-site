@@ -31,17 +31,17 @@ const MenuItems = ({ handleCloseNavMenu, token }: TProps) => {
         {token ? (
           <>
             <Link href={"/found-item"}>
-              <Typography color="white" textAlign="center">
+              <Typography color="#686e7d" textAlign="center">
                 Found Item
               </Typography>
             </Link>
             <Link href={"/lost-items"}>
-              <Typography color="white" textAlign="center">
+              <Typography color="#686e7d" textAlign="center">
                 Lost Item
               </Typography>
             </Link>
             <Link href={"/about"}>
-              <Typography color="white" textAlign="center">
+              <Typography color="#686e7d" textAlign="center">
                 About Us
               </Typography>
             </Link>
@@ -49,22 +49,22 @@ const MenuItems = ({ handleCloseNavMenu, token }: TProps) => {
         ) : (
           <>
             <Link href={"/found-item"}>
-              <Typography color="white" textAlign="center">
+              <Typography color="#686e7d" textAlign="center">
                 Found Item
               </Typography>
             </Link>
             <Link href={"/lost-items"}>
-              <Typography color="white" textAlign="center">
+              <Typography color="#686e7d" textAlign="center">
                 Lost Item
               </Typography>
             </Link>
             <Link href={"/about"}>
-              <Typography color="white" textAlign="center">
+              <Typography color="#686e7d" textAlign="center">
                 About Us
               </Typography>
             </Link>
             <Link href={"/login"}>
-              <Typography color="white" textAlign="center">
+              <Typography color="#686e7d" textAlign="center">
                 Login
               </Typography>
             </Link>

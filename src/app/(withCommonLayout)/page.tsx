@@ -1,3 +1,4 @@
+import Carousel from "@/components/carousel/Carousel";
 import AboutUs from "@/components/charts/ui/AboutUs";
 import CommingSoon from "@/components/charts/ui/CommingSoon";
 import ContactUs from "@/components/charts/ui/ContactUs";
@@ -9,7 +10,7 @@ import { Box } from "@mui/material";
 export default function Home() {
   return (
     <Box>
-      <HeroSection />
+      <Carousel />
       <CommingSoon />
       <AboutUs />
       <ResentLostItem />

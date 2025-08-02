@@ -55,7 +55,7 @@ const UserManagementTable = () => {
   ];
 
   return (
-    <Box mb={36}>
+    <div className="xl:mb-48">
       <Box sx={{ height: "100%", width: "100%" }}>
         {isLoading ? (
           <Box
@@ -78,7 +78,7 @@ const UserManagementTable = () => {
           />
         )}
       </Box>
-    </Box>
+    </div>
   );
 };
 

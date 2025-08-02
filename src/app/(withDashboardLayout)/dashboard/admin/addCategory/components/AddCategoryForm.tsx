@@ -25,7 +25,7 @@ const AddCategoryForm = () => {
   return (
     <FLForms onSubmit={handleAddCategory} defaultValues={defaultValue}>
       <Grid container spacing={4}>
-        <Grid item md={12} xs={12}>
+        <Grid item lg={12} md={12} xs={12}>
           <FLInput
             name="name"
             label="Name"
