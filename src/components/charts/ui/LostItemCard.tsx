@@ -1,52 +1,68 @@
 "use client";
 
+import ShimmerButton from "@/components/ui/Button";
+import SpotlightCard from "@/components/ui/spotlightcard";
 import { useGetLostItemQuery } from "@/redux/features/lostItem/lostItemApi";
 import { TLostItem } from "@/types";
-import { Box, Button, Grid } from "@mui/material";
-import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
-import CardContent from "@mui/material/CardContent";
-import Typography from "@mui/material/Typography";
-import Image from "next/image";
+import { Box, Grid } from "@mui/material";
 import Link from "next/link";
-import PlaceIcon from "@mui/icons-material/Place";
 
 const LostItemCard = () => {
   const { data: lostItems, isLoading } = useGetLostItemQuery({});
 
+  const getDate = (dateTime: string) => {
+    const onlyDate = new Date(dateTime).toISOString().split("T")[0];
+    return onlyDate;
+  };
+
   return (
     <Box>
       {!isLoading && (
-        <Grid container spacing={4}>
+        <Grid container spacing={12}>
           {lostItems?.data?.slice(0, 4).map((lostItem: TLostItem) => (
-            <Grid key={lostItem?.id} item md={4} lg={3} sm={6} xs={12}>
-              <Card sx={{ maxWidth: 345 }}>
-                <Box>
-                  <Image
-                    src={lostItem?.photo}
-                    width={500}
-                    height={60}
-                    alt="product image"
-                    style={{ height: 200 }}
-                  />
-                </Box>
-                <CardContent>
-                  <Typography gutterBottom variant="h5" component="div">
-                    {lostItem?.lostItemName}
-                  </Typography>
-                  <Typography>
-                    <PlaceIcon /> {lostItem?.location}
-                  </Typography>
-                  <Typography variant="body2" mt={1} color="text.secondary">
-                    Description: {lostItem?.description}
-                  </Typography>
-                </CardContent>
-                <CardActions sx={{ justifyContent: "center" }}>
-                  <Link href={`/lost-items/${lostItem?.id}`}>
-                    <Button sx={{ bgcolor: "#32c2c7" }}>View Details</Button>
-                  </Link>
-                </CardActions>
-              </Card>
+            <Grid key={lostItem?.id} item md={6} lg={3} sm={6} xs={12}>
+              <SpotlightCard>
+                <div className="border border-[#eee] rounded-[20px] w-full max-w-[303px] h-[422px] group cursor-pointer overflow-hidden mx-auto">
+                  {/* Image container with overlay */}
+                  <div className="relative h-[303px] w-[303px] border-b border-[#eee] bg-[#eee] overflow-hidden">
+                    <img
+                      src={lostItem?.photo || "/placeholder.svg"}
+                      alt="item picture"
+                      className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                    />
+
+                    {/* Hover overlay that slides up from bottom */}
+                    <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-pink-200/90 via-pink-300/70 to-transparent p-4 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out">
+                      <div className="text-white space-y-3">
+                        <div className="flex justify-center w-full items-center">
+                          <Link href={`/lost-items/${lostItem?.id}`}>
+                            <ShimmerButton buttonTitle="Details" />
+                          </Link>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Original details section - still visible */}
+                  <div className="p-[20px]">
+                    <div className="flex justify-between text-[13px] text-[#777] font-quicksand">
+                      <p>{lostItem?.category?.name}</p>
+                      <p>{getDate(lostItem?.date)}</p>
+                    </div>
+                    <h2 className="text-[16px] font-quicksand text-[#3d4750] font-bold">
+                      {lostItem?.lostItemName}
+                    </h2>
+                    <div className="flex justify-between">
+                      <p className="font-quicksand font-bold text-[16px] text-[#686e7d]">
+                        {lostItem?.contactNumber}
+                      </p>
+                      <p className="text-[13px] text-[#777] font-quicksand">
+                        {lostItem?.user?.name}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </SpotlightCard>
             </Grid>
           ))}
         </Grid>

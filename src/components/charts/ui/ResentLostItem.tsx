@@ -5,8 +5,8 @@ import LostItemCard from "./LostItemCard";
 const ResentLostItem = () => {
   return (
     <Box mt={8}>
-      <Heading title="Recent Lost Item" />
-      <div className="md:mx-16 mx-12 mb-12">
+      <Heading title="Recent Lost" highlight="Item" />
+      <div className="px-40 mb-12 ">
         <LostItemCard />
       </div>
     </Box>

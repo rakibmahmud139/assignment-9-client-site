@@ -1,7 +1,10 @@
 import { USER_ROLE } from "@/constant/role";
 import { SvgIconTypeMap } from "@mui/material";
 import { OverridableComponent } from "@mui/material/OverridableComponent";
-import { StaticImport } from "next/dist/shared/lib/get-img-props";
+import {
+  StaticImport,
+  StaticRequire,
+} from "next/dist/shared/lib/get-img-props";
 
 export type TUser = {
   id: string;
@@ -38,7 +41,7 @@ export type TLostItem = {
   location?: string | null;
   isFound?: string | null;
   contactNumber: string | null;
-  photo: string | StaticImport;
+  photo: string;
   date: string;
   createdAt: string;
   updatedAt: string;

@@ -39,15 +39,14 @@ function Navbar() {
   };
 
   return (
-    <div className="static bg-[#fff] border border-[#eee]">
-      <Container maxWidth="xl">
+    <div className="static bg-[#fff] border px-40 border-[#eee]">
+      <div>
         <Toolbar disableGutters>
           <Link href={"/"}>
             <Typography
               variant="h6"
               noWrap
               sx={{
-                mr: 2,
                 display: { xs: "none", md: "flex" },
                 fontFamily: "monospace",
                 fontWeight: 700,
@@ -55,7 +54,7 @@ function Navbar() {
                 textDecoration: "none",
               }}
             >
-              <Image src={logo} alt="logo" width={80} height={80} />
+              <Image src={logo} alt="logo" width={60} height={60} />
             </Typography>
           </Link>
 
@@ -135,7 +134,7 @@ function Navbar() {
             </Box>
           )}
         </Toolbar>
-      </Container>
+      </div>
     </div>
   );
 }

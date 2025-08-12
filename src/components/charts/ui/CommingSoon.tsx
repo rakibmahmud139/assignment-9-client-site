@@ -1,93 +1,90 @@
-"use client";
+import { Car, Dog, Wallet, Watch } from "lucide-react";
 
-import Heading from "@/components/shared/Heading";
-import { useState } from "react";
-import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
-
-// Define your items with different images
-const items = [
+// Data for the category cards for easy management
+const categoryData = [
   {
-    imageUrl: "https://cdn.easyfrontend.com/pictures/ecommerce/grid_9_1.png",
-    title: "Toys",
+    icon: <Car size={32} className="text-red-400" />,
+    title: "Car",
+    items: "485 items",
+    bgColor: "bg-red-50",
   },
   {
-    imageUrl: "https://cdn.easyfrontend.com/pictures/ecommerce/grid_9_4.png",
-    title: "Kids",
+    icon: <Dog size={32} className="text-green-400" />,
+    title: "Dog",
+    items: "251 items",
+    bgColor: "bg-green-50",
   },
   {
-    imageUrl: "https://cdn.easyfrontend.com/pictures/ecommerce/grid_9_3.png",
-    title: "Bags",
+    icon: <Wallet size={32} className="text-purple-400" />,
+    title: "Wallet",
+    items: "49 items",
+    bgColor: "bg-purple-50",
   },
   {
-    imageUrl: "https://cdn.easyfrontend.com/pictures/ecommerce/grid_9_5.png",
-    title: "Babies",
+    icon: <Watch size={32} className="text-yellow-400" />,
+    title: "Watch",
+    items: "8 items",
+    bgColor: "bg-yellow-50",
   },
 ];
 
-const Item = ({ currentIndex }: { currentIndex: number }) => {
-  return items.map((item, index) => (
-    <div
-      className="col-span-12 sm:col-span-6 md:col-span-3 my-12 transition-opacity duration-500 ease-in-out"
-      key={index}
-    >
-      <a
-        href="#!"
-        className="bg-white dark:bg-slate-800 shadow-xl relative flex items-end justify-center min-h-[155px] rounded-t-[30px] rounded-b-[15px] border dark:border-slate-700"
-      >
-        <div className="absolute -top-[75px] left-1/2 -translate-x-1/2 bg-white dark:bg-slate-800 shadow border dark:border-slate-700 rounded-full flex justify-center items-center h-40 w-40">
-          <img src={item.imageUrl} alt={item.title} className="w-20" />
-        </div>
-        <h4 className="text-2xl font-medium mb-6">{item.title}</h4>
-      </a>
-    </div>
-  ));
-};
+// Reusable Card Component
+const CategoryCard = ({
+  icon,
+  title,
+  items,
+  bgColor,
+}: {
+  icon: any;
+  title: string;
+  items?: string;
+  bgColor: string;
+}) => (
+  <div
+    className={`flex flex-col items-center justify-center p-6 rounded-2xl w-36 h-36 transition-transform hover:scale-105 ${bgColor}`}
+  >
+    <div className="mb-3">{icon}</div>
+    <h3 className="font-semibold text-gray-800">{title}</h3>
+    <p className="text-sm text-gray-500">{items}</p>
+  </div>
+);
 
-const CommingSoon = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  const handlePrev = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? items.length - 1 : prevIndex - 1
-    );
-  };
-
-  const handleNext = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === items.length - 1 ? 0 : prevIndex + 1
-    );
-  };
-
+// Main Section Component
+const ExploreSection = () => {
   return (
-    <div className="pt-14 md:pt-24 bg-white dark:bg-[#0b1727] text-zinc-900 dark:text-white relative overflow-hidden z-10">
-      <div className="absolute top-0 right-0">
-        <img
-          src="https://cdn.easyfrontend.com/pictures/ecommerce/grid_10_shape1.png"
-          alt=""
-        />
-      </div>
-
-      <div className="container px-4 mx-auto relative">
-        <Heading title="Top Category" />
-
-        <div className="relative">
-          <div className="grid grid-cols-12 gap-6">
-            <Item currentIndex={currentIndex} />
+    <div className="py-12 px-40 mt-20">
+      <div className="lg:flex items-center gap-6">
+        {/* Left Side: Image */}
+        <div className="relative overflow-hidden rounded-[30px] ">
+          <img
+            src="/lost.jpg" // Make sure this image is in your /public folder
+            alt="Woman shopping for groceries"
+            className=" object-cover rounded-[30px] h-[526px] w-[526px]"
+          />
+          <div className="absolute top-5 right-10 bg-opacity-60 bg-[#6c7fd8] text-white text-sm font-bold font-quicksand px-4 py-2 rounded-[30px]">
+            Lost
           </div>
-          <div className="flex items-center">
-            <button
-              onClick={handlePrev}
-              className="absolute top-1/2 left-0 md:-left-7 -translate-y-1/2 bg-white bg-opacity-50 shadow-xl text-pink-500 text-xl font-bold flex justify-center items-center rounded-full px-5 py-4 mr-4"
-            >
-              <FaChevronLeft />
-            </button>
+        </div>
 
-            <button
-              onClick={handleNext}
-              className="absolute top-1/2 right-0 md:-right-7 -translate-y-1/2 bg-white bg-opacity-50 shadow-xl text-pink-500 text-xl font-bold flex justify-center items-center rounded-full px-5 py-4"
-            >
-              <FaChevronRight />
-            </button>
+        {/* Right Side: Content */}
+        <div className="flex flex-col items-center lg:items-start h-[526px] w-[526px]">
+          <h2 className="text-[124px] font-bold leading-[1.2] text-white opacity-15 [text-shadow:1px_1px_#111a24,_-1px_1px_#111a24,_1px_-1px_#111a24,_-1px_-1px_#111a24]">
+            Explore Categories
+          </h2>
+          <div
+            className="flex flex-wrap justify-center mt-[56px] lg:justify-start gap-4
+                   ml-[-150px] pt-[30px] pl-[30px] bg-white relative rounded-tl-[30px]
+                   max-w-4xl mx-auto"
+            style={{ width: "calc(100% + 150px)" }}
+          >
+            {categoryData.map((category, index) => (
+              <CategoryCard
+                key={index}
+                icon={category.icon}
+                title={category.title}
+                bgColor={category.bgColor}
+              />
+            ))}
           </div>
         </div>
       </div>
@@ -95,4 +92,4 @@ const CommingSoon = () => {
   );
 };
 
-export default CommingSoon;
+export default ExploreSection;

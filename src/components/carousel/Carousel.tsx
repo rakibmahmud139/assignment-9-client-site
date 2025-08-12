@@ -6,19 +6,21 @@ import { useEffect, useRef, useState } from "react";
 // Placeholder data for the carousel slides
 const images = [
   {
-    label: "Explore Healthy & Fresh Fruits",
-    description: "Flat 30% Off",
-    imgPath: "https://placehold.co/1200x500/22c55e/fff?text=Healthy+Fruits+1",
+    label: "Reuniting You with What Matters Digitally",
+    description: "Get your product",
+    imgPath:
+      "https://i.ibb.co.com/k2BcVb7m/u-Yew2vu7-R9ic2h-Lbt-OM97g-removebg-preview.png",
   },
   {
-    label: "Delicious Organic Vegetables",
-    description: "Get 20% Off",
-    imgPath: "https://placehold.co/1200x500/0ea5e9/fff?text=Organic+Veggies+2",
+    label: "Smart Search for Lost Things",
+    description: "Claim Your Item",
+    imgPath:
+      "https://i.ibb.co.com/BVGQDmTN/heimplanet-monolith-weekender-2-removebg-preview.png",
   },
   {
-    label: "Freshly Baked Goods",
-    description: "Buy One Get One Free",
-    imgPath: "https://placehold.co/1200x500/f59e0b/fff?text=Baked+Goods+3",
+    label: "A Place Where Lost Things Find Hope",
+    description: "Upload what you found",
+    imgPath: "https://i.ibb.co.com/xqQDx0hx/OIP-removebg-preview-1.png",
   },
 ];
 
@@ -69,11 +71,11 @@ const Carousel = () => {
     setIsPaused(false);
   };
 
-  const wordsToColor = ["Healthy", "Organic", "Goods"];
+  const wordsToColor = ["Digitally", "Find", "Lost"];
 
   return (
     <div
-      className="relative w-full max-w-full overflow-hidden px-52 bg-[#f8f8fb] font-inter"
+      className="relative w-full max-w-full overflow-hidden px-40 bg-[#f8f8fb] font-inter"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
@@ -81,7 +83,7 @@ const Carousel = () => {
         {images.map((step, index) => (
           <div
             key={index}
-            className={`absolute top-0 left-0 w-full h-full  grid grid-cols-6 lg:grid-cols-12 gap-8 items-center justify-between
+            className={`absolute top-0 left-0 w-full h-full  grid grid-cols-6 lg:grid-cols-12 gap-16 items-center justify-between
                         transition-opacity duration-500 ease-in-out ${
                           index === activeStep
                             ? "opacity-100 z-10"
@@ -100,7 +102,7 @@ const Carousel = () => {
                 <p className="text-[#777777] text-[14px] font-medium mb-[20px]">
                   {step.description}
                 </p>
-                <h2 className="text-[#3d4750] text-[50px] font-bold font-quicksand leading-tight mb-[20px]">
+                <h2 className="text-[#3d4750] text-[60px] font-bold font-quicksand leading-tight mb-[20px]">
                   {step.label.split(" ").map((word, wordIndex) => (
                     <React.Fragment key={wordIndex}>
                       {wordIndex > 0 && " "}
@@ -120,7 +122,7 @@ const Carousel = () => {
             {/* Image with Horizontal Animation */}
             <div className="overflow-hidden lg:col-span-6">
               <img
-                className={`w-full h-auto max-h-96 md:max-h-96 object-contain rounded-lg transition-transform duration-500 transform hover:scale-105 ${
+                className={`w-full h-[496px] max-h-96 md:max-h-96 object-contain rounded-lg transition-transform duration-500 transform hover:scale-105 ${
                   isAnimating && index === activeStep
                     ? "translate-x-0"
                     : "translate-x-full"

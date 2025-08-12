@@ -5,9 +5,9 @@ import RecentFoundItemsCard from "./ResentFoundItemCard";
 const AboutUs = () => {
   return (
     <div className="mt-12">
-      <Heading title="Resent Found Item" />
+      <Heading title="Resent Found" highlight="Item" />
 
-      <div className="md:mx-16 mx-12">
+      <div className="px-40">
         <RecentFoundItemsCard />
       </div>
     </div>
